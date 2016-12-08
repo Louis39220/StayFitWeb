@@ -5,10 +5,8 @@ angular.module('profil.controllers', [])
 	$scope.modif = {firstName:'', lastName:'', birthday:'', sexe:'', showModification: false};
 
 	$scope.showProfilModification = function () {
-		console.log($scope.modif.showModification);
 		$scope.modif.showModification=true;
-		console.log($scope.modif.showModification);
-		
+		document.getElementById('modifFirst').focus();
 	}
 
 	$scope.doProfilModification = function (modif) {

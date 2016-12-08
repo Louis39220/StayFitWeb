@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'information.controllers', 'services', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'information.controllers', 'services', 'amChartsDirectiveExample', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -15,20 +15,20 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   });
 
   $rootScope.user = {
-    mail:'', 
-    password:'', 
-    objectif:"Prise de masse", 
-    isConnected:false, 
-    firstName: "Chris", 
-    lastName: "Van Damme", 
-    birthday: "13/01/1995",
-    size: 193,
+  	mail:'', 
+  	password:'', 
+  	objectif:"Prise de masse", 
+  	isConnected:false, 
+  	firstName: "Chris", 
+  	lastName: "Van Damme", 
+  	birthday: "13/01/1995",
+  	size: 193,
     weight: 90,
     percentage: 18,
     creation_date: "25/11/2016",
     sexe: "Male",
-    is_coach: true,
-    is_dietitian: true
+  	is_coach: true,
+  	is_dietitian: true
   };
 })
 
@@ -87,7 +87,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       url: '/',
       views: {
         'menuContent': {
-          templateUrl: 'pages/suivi/suivi.html'
+          templateUrl: 'pages/suivi/suivi.html',
+          controller: 'SuiviCtrl'
         }
       }
     })
