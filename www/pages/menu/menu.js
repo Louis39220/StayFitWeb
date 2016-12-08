@@ -2,7 +2,7 @@ angular.module('menu.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,userService) {
 
-
+  $scope.erreurAuth = false;
   // Triggered in the login modal to close it
   $scope.closeModal = function() {
     $scope.modal.remove();
@@ -52,6 +52,9 @@ angular.module('menu.controllers', [])
 
   // Open the login modal
   $scope.login = function() {
+    if ($scope.modal != null) {
+      $scope.modal.remove();
+    }
     $ionicModal.fromTemplateUrl('pages/menu/login.html', {
     scope: $scope
     }).then(function(modal) {
@@ -62,14 +65,20 @@ angular.module('menu.controllers', [])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
+  $scope.doLogin = function(user) {
+      var retour = userService.authenticate(user)
 
-      //userService.authenticate($scope.user);
-
-
-    $scope.user.isConnected=true;
-    console.log('Doing login', $scope.user);
-    $scope.closeModal();
+      retour.then(function(response) {
+        console.log(response);
+        if (response.data) {
+          $scope.user.mail=user.mail;
+          $scope.user.isConnected=true;
+          $scope.erreurAuth = false;
+          $scope.closeModal();
+        }else{
+          $scope.erreurAuth = true;
+        }
+      })   
   };
 
   $scope.subscribe = function() {
@@ -90,7 +99,7 @@ angular.module('menu.controllers', [])
       var retour = userService.suscribe(newUser)
 
       retour.then(function(response) {
-        if (response.status == 200) {
+        if (response.data == "ACCEPTED") {
           $scope.user.mail=newUser.mail;
           $scope.user.isConnected=true;
           console.log("suscribe ok");
@@ -111,13 +120,13 @@ angular.module('menu.controllers', [])
 
 
 .directive('vEquals', ['$parse', function vEqualsDirective($parse) {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function(scope, element, attrs, ngModel) {
-            ngModel.$validators.vEquals = function(value) {
-                return value === $parse(attrs.vEquals)(scope);
-            }
-        }
-    };
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            ngModel.$validators.vEquals = function(value) {
+                return value === $parse(attrs.vEquals)(scope);
+            }
+        }
+    };
 }]);

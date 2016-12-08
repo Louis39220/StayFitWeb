@@ -9,7 +9,7 @@ angular.module('services', [])
 			console.log(data);
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/userConnect/create',
+				url: 'http://localhost:8080/userConnect/login',
 				params: data
 			})
 		},
