@@ -1,0 +1,63 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-calm">
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+        <div class="buttonsHeader bar">
+
+          <button class="button button-clear button-light buttonHeader" ng-click="goToSuivi()">Suivi</button>
+          <button class="button button-clear button-light buttonHeader" ng-click="goToSport()">Sport</button>
+          <button class="button button-clear  button-light buttonHeader" ng-click="goToNutrition()">Nutrition</button>
+          <button style="display: none"></button>
+
+        </div>
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent">
+    </ion-nav-view>
+  </ion-side-menu-content>
+
+  <!-- Side Menu (left) -->
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title" ng-if="!user.isConnected">Mon Compte</h1><h1 class="title" ng-if="user.isConnected">{{user.mail}}</h1>
+    </ion-header-bar>
+    <ion-content scroll="false">
+      <ion-list>
+        <ion-item ng-if="!user.isConnected" menu-close ng-click="login()">
+          Connexion
+        </ion-item>
+        <ion-item ng-if="!user.isConnected" menu-close ng-click="subscribe()">
+          Inscription
+        </ion-item>
+        <ion-item ng-if="user.isConnected" menu-close ng-click="goToProfil()">
+          Mon profil
+        </ion-item>
+        <ion-item ng-if="user.isConnected" menu-close ng-click="goToInfos()">
+          Mes informations
+        </ion-item>
+        <ion-item ng-if="user.isConnected" menu-close ng-click="goToObjectif()">
+          Mon objectif
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="bottomItem">
+      <div class="row">
+        <div class="col">
+          <ion-item menu-close  ng-click="goToContact()" >
+            Contact
+          </ion-item>
+        </div>
+        <div class="col">
+          <ion-item menu-close  ng-click="goToAbout()">
+            A propos
+          </ion-item>
+        </div>
+      </div>
+    </ion-content>
+
+  </div>
+</ion-side-menu>
+</ion-side-menus>

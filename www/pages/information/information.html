@@ -1,0 +1,40 @@
+<ion-view>
+  <ion-content>
+    <div class="list card">
+	  <h1 class="title">Information</h1>
+
+      <div class="item item-body">
+        <form name="informationForm" ng-submit="doInformationModification(modif)">
+
+          <label class="item item-input item-stacked-label">
+          	<div class="item-avatar customIcon">
+          	<img class="customIcon" src="ressources/scale.png">
+          	</div>
+         	<span class="input-label">Poids :</span>
+         	<input type="text" ng_model="modif.weight" placeholder="{{user.weight}} kg">
+          </label>
+
+          <label class="item item-input item-stacked-label">
+          	<div class="item-avatar customIcon">
+          	<img class="customIcon" src="ressources/height.png">
+          	</div>
+         	<span class="input-label">Taille :</span>
+         	<input type="text" ng_model="modif.size" placeholder="{{user.size}} cm">
+          </label>
+
+          <label class="item item-input item-stacked-label">
+          	<div class="item-avatar">
+          	<img class="customIcon" src="ressources/percentage.png">
+          	</div>
+         	<span class="input-label">Masse Graisseuse :</span>
+         	<input type="text" ng_model="modif.percentage" placeholder="{{user.percentage}} %">
+          </label>
+
+          <label class="item">
+            <button class="button button-block button-balanced" type="submit">Save</button>
+          </label>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

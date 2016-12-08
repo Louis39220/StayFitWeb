@@ -1,0 +1,35 @@
+.buttonsHeader {
+
+	width: 95%;
+	margin-left: 45px;
+	top: 0;
+	border-bottom-width: 0;
+
+}
+
+.buttonHeader {
+
+	width: 30%;
+	color: #fff;
+
+}
+
+.bottomItem {
+
+	position: absolute;
+    bottom: 5px;
+
+}
+
+.errorInput {
+
+	color: red;
+    margin-left: 10px;
+    
+}
+
+.customIcon {
+
+	border-radius: 0% !important;
+
+}
