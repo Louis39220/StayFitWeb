@@ -32,6 +32,13 @@ angular.module('services', [])
 				url: 'http://localhost:8080/user/create',
 				params: data
 			})
+		},
+
+		getInfos: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://localhost:8080/user/find/'+id
+			})
 		}
 	}
 })

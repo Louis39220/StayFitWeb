@@ -50,7 +50,6 @@ angular.module('menu.controllers', [])
     $state.go('app.about');
   };
 
-  // Open the login modal
   $scope.login = function() {
     if ($scope.modal != null) {
       $scope.modal.remove();
@@ -64,7 +63,6 @@ angular.module('menu.controllers', [])
     });
   };
 
-  // Perform the login action when the user submits the login form
   $scope.doLogin = function(user) {
       userService.authenticate(user)
 
@@ -76,6 +74,7 @@ angular.module('menu.controllers', [])
           $scope.user.isConnected=true;
           $scope.erreurAuth = false;
           console.log($scope.user);
+          $scope.getInfos(response.id);
           $scope.closeModal();
         }else{
           $scope.erreurAuth = true;
@@ -146,6 +145,28 @@ angular.module('menu.controllers', [])
         }
       })
   };
+
+  $scope.getInfos = function(id) {
+    userService.getInfos($scope.user.id)
+
+    .then(function(response) {
+      console.log(response);
+      if (response.data != null) {
+        $scope.user.firstName = response.data.firstName;
+        $scope.user.lastName = response.data.lastName;
+        $scope.user.sexe = response.data.sexe;
+        $scope.user.is_coach = response.data.is_coach;
+        $scope.user.is_dietitian = response.data.is_dietitian;
+        $scope.user.size = response.data.size;
+        var birthdayDash = response.data.birthday.split(" ");
+        var birthdayArray = birthdayDash[0].split("-");
+        var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
+        $scope.user.birthday = birthday;
+      }else{
+        // TODO afficher erreur
+      }
+    })
+  }
 
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
