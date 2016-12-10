@@ -99,7 +99,7 @@ angular.module('menu.controllers', [])
   $scope.doSubscribe = function(newUser) {
     if (newUser.password == newUser.confirmPassword) {
       userService.suscribe(newUser).then(function(response) {
-        if (response.data !+= 0) {
+        if (response.data != 0) {
           $scope.user.mail=newUser.mail;
           $scope.user.id = response.data;
           $scope.user.isConnected=true;
@@ -133,7 +133,12 @@ angular.module('menu.controllers', [])
     .then(function(response) {
         console.log(response);
         if (response.data) {
-          // TODO maj des infos user
+          $scope.user.firstName = infos.firstName;
+          $scope.user.lastName = infos.lastName;
+          $scope.user.birthday = infos.birthday;
+          $scope.user.sexe = infos.sexe;
+          if (infos.size != null) $scope.user.size = infos.size;
+          if (infos.weight != null) $scope.user.weight = infos.weight;
           console.log($scope.user);
           $scope.closeModal();
         }else{
