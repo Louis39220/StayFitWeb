@@ -29,7 +29,10 @@
         </div>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Subscribe</button>
-        </label>
+        </label>  
+        <div class="item center error" ng-show="erreurSubscribe">
+          Problème avec le serveur : inscription refusée
+        </div>  
       </div>
     </form>
   </ion-content>

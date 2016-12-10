@@ -3,6 +3,8 @@ angular.module('menu.controllers', [])
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,userService) {
 
   $scope.erreurAuth = false;
+  $scope.erreurSubscribe = false;
+  $scope.erreurFirstInfos = false;
   // Triggered in the login modal to close it
   $scope.closeModal = function() {
     $scope.modal.remove();
@@ -79,6 +81,8 @@ angular.module('menu.controllers', [])
         }else{
           $scope.erreurAuth = true;
         }
+      }, function() {
+        $scope.erreurAuth = true;
       })   
   };
 
@@ -102,12 +106,15 @@ angular.module('menu.controllers', [])
           $scope.user.mail=newUser.mail;
           $scope.user.id = response.data;
           $scope.user.isConnected=true;
+          $scope.erreurSubscribe = false;
           console.log("suscribe ok");
           $scope.closeModal();
           $scope.getFirstInfos();
         }else{
-          // TODO afficher erreur
+          $scope.erreurSubscribe = true;
         }
+      }, function() {
+        $scope.erreurSubscribe = true;
       })
     }   
   };
@@ -138,11 +145,14 @@ angular.module('menu.controllers', [])
           $scope.user.sexe = infos.sexe;
           if (infos.size != null) $scope.user.size = infos.size;
           if (infos.weight != null) $scope.user.weight = infos.weight;
+          $scope.erreurFirstInfos = false;
           console.log($scope.user);
           $scope.closeModal();
         }else{
-          // TODO afficher erreur
+          $scope.erreurFirstInfos = true;
         }
+      }, function() {
+        $scope.erreurFirstInfos = true;
       })
   };
 
