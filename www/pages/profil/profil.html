@@ -50,6 +50,7 @@
         <form name="profilForm" ng-submit="doProfilModification(modif)">
           <label class="item item-input item-stacked-label">
          	  <span class="input-label">Prénom :</span>
+            <input type="text" id="modifFirst" ng-model="modif.firstName" placeholder={{user.firstName}}>
           </label>
           <label class="item item-input item-stacked-label">
             <span class="input-label">Nom :</span>

@@ -66,14 +66,16 @@ angular.module('menu.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function(user) {
-      var retour = userService.authenticate(user)
+      userService.authenticate(user)
 
-      retour.then(function(response) {
+      .then(function(response) {
         console.log(response);
         if (response.data) {
           $scope.user.mail=user.mail;
+          $scope.user.id = response.data;
           $scope.user.isConnected=true;
           $scope.erreurAuth = false;
+          console.log($scope.user);
           $scope.closeModal();
         }else{
           $scope.erreurAuth = true;
@@ -96,26 +98,56 @@ angular.module('menu.controllers', [])
 
   $scope.doSubscribe = function(newUser) {
     if (newUser.password == newUser.confirmPassword) {
-      var retour = userService.suscribe(newUser)
-
-      retour.then(function(response) {
-        if (response.data == "ACCEPTED") {
+      userService.suscribe(newUser).then(function(response) {
+        if (response.data !+= 0) {
           $scope.user.mail=newUser.mail;
+          $scope.user.id = response.data;
           $scope.user.isConnected=true;
           console.log("suscribe ok");
+          $scope.closeModal();
+          $scope.getFirstInfos();
+        }else{
+          // TODO afficher erreur
+        }
+      })
+    }   
+  };
+
+  $scope.getFirstInfos = function() {
+    if ($scope.modal != null) {
+      $scope.modal.remove();
+    }
+    $ionicModal.fromTemplateUrl('pages/menu/firstInfos.html', {
+    scope: $scope
+    }).then(function(modal) {
+      if ($scope.modal != null) $scope.modal.remove();
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  };
+
+  $scope.setFirstInfos = function(infos) {
+    infos.id = $scope.user.id;
+    userService.setInfos(infos)
+
+    .then(function(response) {
+        console.log(response);
+        if (response.data) {
+          // TODO maj des infos user
+          console.log($scope.user);
           $scope.closeModal();
         }else{
           // TODO afficher erreur
         }
       })
-    }else{
-      // TODO afficher erreur
-    }    
   };
 
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
-  })
+  });
+
+
+
 })
 
 

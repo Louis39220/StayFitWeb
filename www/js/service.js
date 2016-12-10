@@ -22,6 +22,16 @@ angular.module('services', [])
 				url: 'http://localhost:8080/userConnect/create',
 				params: data
 			})
+		},
+
+		setInfos: function(infos){
+			var data = {id: infos.id, firstname: infos.firstName, lastname: infos.lastName, birthday: infos.birthday, sexe: infos.sexe, size: infos.size};
+			console.log(data);
+			return $http({
+				method: 'POST',
+				url: 'http://localhost:8080/user/create',
+				params: data
+			})
 		}
 	}
 })

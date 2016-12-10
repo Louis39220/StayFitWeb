@@ -15,8 +15,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   });
 
   $rootScope.user = {
-  	mail:'', 
-  	password:'', 
+  	mail:'',
+    id: null,
   	objectif:"Prise de masse", 
   	isConnected:false, 
   	firstName: "Chris", 
@@ -26,7 +26,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     weight: 90,
     percentage: 18,
     creation_date: "25/11/2016",
-    sexe: "Male",
+    sexe: "Masculin",
   	is_coach: true,
   	is_dietitian: true
   };
