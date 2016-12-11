@@ -1,8 +1,6 @@
 angular.module('services', [])
 
 .factory('userService', function($http) {
-	var user = [];
-
 	return {
 		authenticate: function(user){
 			var data = {email: user.mail, psw: user.password};
@@ -38,6 +36,25 @@ angular.module('services', [])
 			return $http({
 				method: 'GET',
 				url: 'http://localhost:8080/user/find/'+id
+			})
+		}
+	}
+})
+
+.factory('bodyUserService', function($http) {
+	return {
+		getBodyUser: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://localhost:8080/bodyUser/find/'+id
+			})
+		},
+
+		setBodyUser: function(bodyUser){
+			return $http({
+				method: 'POST',
+				url: 'http://localhost:8080/bodyUser/create/',
+				params: bodyUser
 			})
 		}
 	}

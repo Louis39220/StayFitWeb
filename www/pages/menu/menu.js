@@ -1,6 +1,6 @@
 angular.module('menu.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,userService) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,userService,bodyUserService) {
 
   $scope.erreurAuth = false;
   $scope.erreurSubscribe = false;
@@ -176,6 +176,10 @@ angular.module('menu.controllers', [])
         // TODO afficher erreur
       }
     })
+  }
+
+  $scope.getBody = function(id) {
+
   }
 
   $scope.$on('$destroy', function() {
