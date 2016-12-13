@@ -5,15 +5,13 @@ angular.module('objectif.controllers', [])
 	$scope.init = function () {
 
 		// TODO récuperer la liste d'objectifs
-		$scope.ListObjectif = [
-		{ name: "Sèche Musculaire", description: "Description de la seche", image: "ressources/seche.jpg", checked: false},
-		{ name: "Prise de masse", description: "Description Prise de masse", image: "ressources/prisedemasse.jpg", checked: false},
-	  
-		];
+		
 
 		// for each sur les objectifs pour cocher l'objectif que suit l'utilisateur
 		$scope.ListObjectif.forEach(function(item) {
-			if (item.name == $scope.user.objectif) {
+			if (item.name == $scope.goal) {
+				$scope.goal_description, = item.description, 
+				$scope.goal_image = item.image = ,
 				item.checked = true;
 			}
 		});

@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'information.controllers', 'services', 'amChartsDirectiveExample', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport.controllers', 'information.controllers', 'services', 'amChartsDirectiveExample', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -17,7 +17,6 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   $rootScope.user = {
   	mail:'', 
   	password:'', 
-  	objectif:"Prise de masse", 
   	isConnected:false, 
   	firstName: "Chris", 
   	lastName: "Van Damme", 
@@ -28,8 +27,17 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     creation_date: "25/11/2016",
     sexe: "Male",
   	is_coach: true,
-  	is_dietitian: true
+  	is_dietitian: true,
+    goal:"Prise de masse", 
+    goal_description: "Description Prise de masse",
+    goal_image: "ressources/prisedemasse.jpg"
   };
+   $rootScope.ListObjectif = [
+    { name: "Sèche Musculaire", description: "Description de la seche", image: "ressources/seche.jpg", checked: false},
+    { name: "Prise de masse", description: "Description Prise de masse", image: "ressources/prisedemasse.jpg", checked: false},
+    { name: "Maintien musculaire", description: "Description maintien musculaire", image: "ressources/maintien_musculaire.jpg", checked: true}
+    
+    ];
 })
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$httpProvider) {
@@ -97,7 +105,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       url: '/',
       views: {
         'menuContent': {
-          templateUrl: 'pages/sport/sport.html'
+          templateUrl: 'pages/sport/sport.html',
+          controller: 'SportCtrl'
         }
       }
     })
