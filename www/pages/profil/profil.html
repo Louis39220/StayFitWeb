@@ -28,7 +28,7 @@
         <div class="item item-avatar">
         <img class="customIcon" src="ressources/objectif.png">
           <h2>Objectif :</h2>
-          <h3>{{user.objectif}}</h3>
+          <h3>{{goal.objectif}}</h3>
         </div>
         <div class="item item-avatar" ng-show={{user.is_coach}}>
         <img class="customIcon" src="ressources/coach.png">
@@ -63,6 +63,10 @@
           <label class="item item-input item-stacked-label">
             <span class="input-label">Sexe :</span>
             <input type="text" ng-model="modif.sexe" placeholder={{user.sexe}}>
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Taille :</span>
+            <input type="text" ng-model="modif.size" placeholder={{user.size}}>
           </label>
       <label class="item">
         <button class="button button-block button-balanced" type="submit">Save</button>

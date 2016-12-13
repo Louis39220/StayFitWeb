@@ -16,20 +16,26 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
 
   $rootScope.user = {
   	mail:'',
-    id: null,
-  	objectif:"Prise de masse", 
+    id: null, 
   	isConnected:false, 
-  	firstName: "Chris", 
-  	lastName: "Van Damme", 
+  	firstName: "", 
+  	lastName: "", 
   	birthday: "13/01/1995",
   	size: 193,
-    weight: 90,
-    percentage: 18,
-    creation_date: "25/11/2016",
     sexe: "Masculin",
   	is_coach: true,
   	is_dietitian: true
   };
+
+  $rootScope.bodyUser = {
+    weight: 0,
+    percentage: 0
+  };
+
+  $rootScope.goal = {
+    id: null,
+    objectif:"Prise de masse"
+  }
 })
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$httpProvider) {

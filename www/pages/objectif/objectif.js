@@ -13,7 +13,7 @@ angular.module('objectif.controllers', [])
 
 		// for each sur les objectifs pour cocher l'objectif que suit l'utilisateur
 		$scope.ListObjectif.forEach(function(item) {
-			if (item.name == $scope.user.objectif) {
+			if (item.name == $scope.goal.objectif) {
 				item.checked = true;
 			}
 		});
