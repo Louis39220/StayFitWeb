@@ -15,29 +15,30 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   });
 
   $rootScope.user = {
-  	mail:'', 
-  	password:'', 
+  	mail:'',
+    id: null, 
   	isConnected:false, 
-  	firstName: "Chris", 
-  	lastName: "Van Damme", 
+  	firstName: "", 
+  	lastName: "", 
   	birthday: "13/01/1995",
   	size: 193,
-    weight: 90,
-    percentage: 18,
-    creation_date: "25/11/2016",
-    sexe: "Male",
+    sexe: "Masculin",
   	is_coach: true,
   	is_dietitian: true,
     goal:"Prise de masse", 
     goal_description: "Description Prise de masse",
     goal_image: "ressources/prisedemasse.jpg"
   };
-   $rootScope.ListObjectif = [
-    { name: "Sèche Musculaire", description: "Description de la seche", image: "ressources/seche.jpg", checked: false},
-    { name: "Prise de masse", description: "Description Prise de masse", image: "ressources/prisedemasse.jpg", checked: false},
-    { name: "Maintien musculaire", description: "Description maintien musculaire", image: "ressources/maintien_musculaire.jpg", checked: true}
-    
-    ];
+
+  $rootScope.bodyUser = {
+    weight: 0,
+    percentage: 0
+  };
+
+  $rootScope.goal = {
+    id: null,
+    objectif:"Prise de masse"
+  }
 })
 
 .config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider,$httpProvider) {

@@ -1,9 +1,10 @@
 angular.module('profil.controllers', [])
 
-.controller('ProfilCtrl', function($scope) {
+.controller('ProfilCtrl', function($scope,userService) {
 	console.log('ProfilCtrl');
 	$scope.modif = {firstName:'', lastName:'', birthday:'', sexe:'', showModification: false};
 
+// marche pas
 	$scope.showProfilModification = function () {
 		$scope.modif.showModification=true;
 		document.getElementById('modifFirst').focus();
@@ -24,6 +25,26 @@ angular.module('profil.controllers', [])
 			$scope.user.sexe = modif.sexe;
 		}
 		$scope.modif = {firstName:'', lastName:'', sexe:'',showModification: false};
+		userService.setInfos({id: $scope.user.id, firstname: $scope.user.firstName, lastname: $scope.user.lastName, birthday: $scope.user.birthday, sexe: $scope.user.sexe, size: $scope.user.size | 0,weight: $scope.user.weight | 0})
+		.then(function (){
+			if (response.data != 0) {
+	          $scope.user.mail=newUser.mail;
+	          $scope.user.id = response.data;
+	          $scope.user.isConnected=true;
+	          $scope.erreurSubscribe = false;
+	          console.log("suscribe ok");
+	          $ionicLoading.hide();
+	          $scope.getFirstInfos();
+	        }else{
+	          $scope.erreurSubscribe = true;
+	          $ionicLoading.hide();
+	          $scope.suscribe();
+	        }
+		}, function() {
+			$scope.erreurSubscribe = true;
+			$ionicLoading.hide();
+			$scope.suscribe();
+		})
 	}
 
 

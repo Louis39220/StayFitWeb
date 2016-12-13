@@ -1,8 +1,10 @@
 angular.module('menu.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,userService) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService) {
 
-
+  $scope.erreurAuth = false;
+  $scope.erreurSubscribe = false;
+  $scope.erreurFirstInfos = false;
   // Triggered in the login modal to close it
   $scope.closeModal = function() {
     $scope.modal.remove();
@@ -50,8 +52,10 @@ angular.module('menu.controllers', [])
     $state.go('app.about');
   };
 
-  // Open the login modal
   $scope.login = function() {
+    if ($scope.modal != null) {
+      $scope.modal.remove();
+    }
     $ionicModal.fromTemplateUrl('pages/menu/login.html', {
     scope: $scope
     }).then(function(modal) {
@@ -61,15 +65,31 @@ angular.module('menu.controllers', [])
     });
   };
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
+  $scope.doLogin = function(user) {
+      $scope.closeModal();
+      $ionicLoading.show();
+      userService.authenticate(user)
 
-      //userService.authenticate($scope.user);
-
-
-    $scope.user.isConnected=true;
-    console.log('Doing login', $scope.user);
-    $scope.closeModal();
+      .then(function(response) {
+        console.log(response);
+        if (response.data) {
+          $scope.user.mail=user.mail;
+          $scope.user.id = response.data;
+          $scope.user.isConnected=true;
+          $scope.erreurAuth = false;
+          console.log($scope.user);
+          $ionicLoading.hide();
+          $scope.getInfos(response.id);
+        }else{
+          $scope.erreurAuth = true;
+          $ionicLoading.hide();
+          $scope.login();
+        }
+      }, function() {
+        $scope.erreurAuth = true;
+        $ionicLoading.hide();
+        $scope.login();
+      })   
   };
 
   $scope.subscribe = function() {
@@ -87,37 +107,119 @@ angular.module('menu.controllers', [])
 
   $scope.doSubscribe = function(newUser) {
     if (newUser.password == newUser.confirmPassword) {
-      var retour = userService.suscribe(newUser)
-
-      retour.then(function(response) {
-        if (response.status == 200) {
+      $scope.closeModal();
+      $ionicLoading.show();
+      userService.suscribe(newUser).then(function(response) {
+        if (response.data != 0) {
           $scope.user.mail=newUser.mail;
+          $scope.user.id = response.data;
           $scope.user.isConnected=true;
+          $scope.erreurSubscribe = false;
           console.log("suscribe ok");
-          $scope.closeModal();
+          $ionicLoading.hide();
+          $scope.getFirstInfos();
         }else{
-          // TODO afficher erreur
+          $scope.erreurSubscribe = true;
+          $ionicLoading.hide();
+          $scope.suscribe();
         }
+      }, function() {
+        $scope.erreurSubscribe = true;
+        $ionicLoading.hide();
+        $scope.suscribe();
       })
-    }else{
-      // TODO afficher erreur
-    }    
+    }   
   };
+
+  $scope.getFirstInfos = function() {
+    if ($scope.modal != null) {
+      $scope.modal.remove();
+    }
+    $ionicModal.fromTemplateUrl('pages/menu/firstInfos.html', {
+    scope: $scope
+    }).then(function(modal) {
+      if ($scope.modal != null) $scope.modal.remove();
+      $scope.modal = modal;
+      $scope.modal.show();
+    });
+  };
+
+  $scope.setFirstInfos = function(infos) {
+    infos.id = $scope.user.id;
+    $scope.closeModal();
+    $ionicLoading.show();
+    userService.setInfos(infos)
+
+    .then(function(response) {
+        console.log(response);
+        if (response.data) {
+          $scope.user.firstName = infos.firstName;
+          $scope.user.lastName = infos.lastName;
+          $scope.user.birthday = infos.birthday;
+          $scope.user.sexe = infos.sexe;
+          if (infos.size != null) $scope.user.size = infos.size;
+          if (infos.weight != null) $scope.user.weight = infos.weight;
+          $scope.erreurFirstInfos = false;
+          $ionicLoading.hide();
+          console.log($scope.user);
+        }else{
+          $scope.erreurFirstInfos = true;
+          $ionicLoading.hide();
+          $scope.getFirstInfos
+        }
+      }, function() {
+        $scope.erreurFirstInfos = true;
+        $ionicLoading.hide();
+        $scope.getFirstInfos
+      })
+  };
+
+  $scope.getInfos = function(id) {
+    $ionicLoading.show();
+    userService.getInfos($scope.user.id)
+
+    .then(function(response) {
+      console.log(response);
+      if (response.data != null) {
+        $scope.user.firstName = response.data.firstName;
+        $scope.user.lastName = response.data.lastName;
+        $scope.user.sexe = response.data.sexe;
+        $scope.user.is_coach = response.data.is_coach;
+        $scope.user.is_dietitian = response.data.is_dietitian;
+        $scope.user.size = response.data.size;
+        var birthdayDash = response.data.birthday.split(" ");
+        var birthdayArray = birthdayDash[0].split("-");
+        var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
+        $scope.user.birthday = birthday;
+        $ionicLoading.hide();
+      }else{
+        // TODO afficher erreur
+        $ionicLoading.hide();
+      }
+    })
+  }
+
+  $scope.getBody = function(id) {
+
+  }
 
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
-  })
+  });
+
+
+
 })
 
 
 .directive('vEquals', ['$parse', function vEqualsDirective($parse) {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function(scope, element, attrs, ngModel) {
-            ngModel.$validators.vEquals = function(value) {
-                return value === $parse(attrs.vEquals)(scope);
-            }
-        }
-    };
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            ngModel.$validators.vEquals = function(value) {
+                return value === $parse(attrs.vEquals)(scope);
+            }
+        }
+    };
 }]);

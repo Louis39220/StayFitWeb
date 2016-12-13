@@ -1,6 +1,6 @@
 <ion-view>
   <ion-content>
-      <h1  class="customTitle">Information</h1>
+      <h1  class="center">Information</h1>
     <div class="list card">
       <div class="item item-body">
         <form name="informationForm" ng-submit="doInformationModification(modif)">
@@ -11,14 +11,6 @@
           	</div>
          	<span class="input-label">Poids :</span>
          	<input type="text" ng_model="modif.weight" placeholder="{{user.weight}} kg">
-          </label>
-
-          <label class="item item-input item-stacked-label">
-          	<div class="item-avatar customIcon">
-          	<img class="customIcon" src="ressources/height.png">
-          	</div>
-         	<span class="input-label">Taille :</span>
-         	<input type="text" ng_model="modif.size" placeholder="{{user.size}} cm">
           </label>
 
           <label class="item item-input item-stacked-label">

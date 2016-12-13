@@ -1,18 +1,29 @@
 angular.module('information.controllers', [])
 
-.controller('InformationCtrl', function($scope) {
-	$scope.modif = {weight:'', size:'', percentage:''};
+.controller('InformationCtrl', function($scope,$ionicLoading,bodyUserService) {
+	$scope.modif = {weight:'', percentage:''};
+
+	$scope.getInfos = function () {
+		bodyUserService.getBodyUser().then(function(response){
+			$scope.weight = response.data.weight;
+			$scope.percentage = response.data.gracemass;
+			$ionicLoading.hide();
+		}, function(){
+			$ionicLoading.hide();
+		})
+
+	}
+
+	$ionicLoading.show();
+	$scope.getInfos();
 
 	$scope.doInformationModification = function (modif) {
 		console.log(modif);
 		if (modif.weight != ''){
-			$scope.user.weight = modif.weight;
-		}
-		if (modif.size != ''){
-			$scope.user.size = modif.size;
+			$scope.bodyUser.weight = modif.weight;
 		}
 		if (modif.percentage != ''){
-			$scope.user.percentage = modif.percentage;
+			$scope.bodyUser.percentage = modif.percentage;
 		}
 		$scope.modif = {poids:'', size:'', percentage:''};
 	}

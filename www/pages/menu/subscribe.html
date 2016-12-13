@@ -9,27 +9,30 @@
           <span class="input-label">Mail</span>
           <input type="text" name="mail" id="mail" ng-model="newUser.mail" required autofocus>
         </label>
-        <div class="errorInput" ng-messages="suscribeForm.mail.$error" ng-show="suscribeForm.mail.$touched || suscribeForm.mail.$submitted"> 
+        <div class="error" ng-messages="suscribeForm.mail.$error" ng-show="suscribeForm.mail.$touched || suscribeForm.mail.$submitted"> 
             <div ng-message="required">Ce champ doit être rempli</div> 
         </div>
         <label class="item item-input">
           <span class="input-label">Password</span>
           <input type="password" name="password" id="password" ng-model="newUser.password" required>
         </label>
-        <div class="errorInput" ng-messages="suscribeForm.password.$error" ng-show="suscribeForm.password.$touched || suscribeForm.password.$submitted"> 
+        <div class="error" ng-messages="suscribeForm.password.$error" ng-show="suscribeForm.password.$touched || suscribeForm.password.$submitted"> 
             <ng-message when="required">Ce champ doit être rempli</ng-message> 
         </div>
         <label class="item item-input">
           <span class="input-label">Confirm password</span>
           <input type="password" name="confirmPassword" id="confirmPassword" ng-model="newUser.confirmPassword" v-equals="suscribeForm.password.$viewValue" required>
         </label>
-        <div class="errorInput" ng-messages="suscribeForm.confirmPassword.$error" ng-show="suscribeForm.confirmPassword.$touched || suscribeForm.confirmPassword.$submitted"> 
+        <div class="error" ng-messages="suscribeForm.confirmPassword.$error" ng-show="suscribeForm.confirmPassword.$touched || suscribeForm.confirmPassword.$submitted"> 
             <ng-message when="required">Ce champ doit être rempli</ng-message>
             <ng-message when="vEquals">The confirmation and the password are not the same</ng-message>
         </div>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Subscribe</button>
-        </label>
+        </label>  
+        <div class="item center error" ng-show="erreurSubscribe">
+          Problème avec le serveur : inscription refusée
+        </div>  
       </div>
     </form>
   </ion-content>
