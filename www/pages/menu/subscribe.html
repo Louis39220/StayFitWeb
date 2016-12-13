@@ -3,27 +3,27 @@
     <h1 class="title">Subscribe</h1>
   </ion-header-bar>
   <ion-content>
-    <form name="suscribeForm" ng-submit="doSubscribe(newUser)">
+    <form name="subscribeForm" ng-submit="doSubscribe(newUser)">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Mail</span>
           <input type="text" name="mail" id="mail" ng-model="newUser.mail" required autofocus>
         </label>
-        <div class="error" ng-messages="suscribeForm.mail.$error" ng-show="suscribeForm.mail.$touched || suscribeForm.mail.$submitted"> 
+        <div class="error" ng-messages="subscribeForm.mail.$error" ng-show="subscribeForm.mail.$touched || subscribeForm.mail.$submitted"> 
             <div ng-message="required">Ce champ doit être rempli</div> 
         </div>
         <label class="item item-input">
           <span class="input-label">Password</span>
           <input type="password" name="password" id="password" ng-model="newUser.password" required>
         </label>
-        <div class="error" ng-messages="suscribeForm.password.$error" ng-show="suscribeForm.password.$touched || suscribeForm.password.$submitted"> 
+        <div class="error" ng-messages="subscribeForm.password.$error" ng-show="subscribeForm.password.$touched || subscribeForm.password.$submitted"> 
             <ng-message when="required">Ce champ doit être rempli</ng-message> 
         </div>
         <label class="item item-input">
           <span class="input-label">Confirm password</span>
-          <input type="password" name="confirmPassword" id="confirmPassword" ng-model="newUser.confirmPassword" v-equals="suscribeForm.password.$viewValue" required>
+          <input type="password" name="confirmPassword" id="confirmPassword" ng-model="newUser.confirmPassword" v-equals="subscribeForm.password.$viewValue" required>
         </label>
-        <div class="error" ng-messages="suscribeForm.confirmPassword.$error" ng-show="suscribeForm.confirmPassword.$touched || suscribeForm.confirmPassword.$submitted"> 
+        <div class="error" ng-messages="subscribeForm.confirmPassword.$error" ng-show="subscribeForm.confirmPassword.$touched || subscribeForm.confirmPassword.$submitted"> 
             <ng-message when="required">Ce champ doit être rempli</ng-message>
             <ng-message when="vEquals">The confirmation and the password are not the same</ng-message>
         </div>

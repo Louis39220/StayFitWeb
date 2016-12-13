@@ -12,7 +12,7 @@ angular.module('services', [])
 			})
 		},
 
-		suscribe: function(user){
+		subscribe: function(user){
 			var data = {email: user.mail, psw: user.password};
 			console.log(data);
 			return $http({

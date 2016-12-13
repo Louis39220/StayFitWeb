@@ -32,18 +32,18 @@ angular.module('profil.controllers', [])
 	          $scope.user.id = response.data;
 	          $scope.user.isConnected=true;
 	          $scope.erreurSubscribe = false;
-	          console.log("suscribe ok");
+	          console.log("subscribe ok");
 	          $ionicLoading.hide();
 	          $scope.getFirstInfos();
 	        }else{
 	          $scope.erreurSubscribe = true;
 	          $ionicLoading.hide();
-	          $scope.suscribe();
+	          $scope.subscribe();
 	        }
 		}, function() {
 			$scope.erreurSubscribe = true;
 			$ionicLoading.hide();
-			$scope.suscribe();
+			$scope.subscribe();
 		})
 	}
 

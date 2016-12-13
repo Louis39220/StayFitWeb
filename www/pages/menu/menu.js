@@ -109,13 +109,13 @@ angular.module('menu.controllers', [])
     if (newUser.password == newUser.confirmPassword) {
       $scope.closeModal();
       $ionicLoading.show();
-      userService.suscribe(newUser).then(function(response) {
+      userService.subscribe(newUser).then(function(response) {
         if (response.data != 0) {
           $scope.user.mail=newUser.mail;
           $scope.user.id = response.data;
           $scope.user.isConnected=true;
           $scope.erreurSubscribe = false;
-          console.log("suscribe ok");
+          console.log("subscribe ok");
           $ionicLoading.hide();
           $scope.getFirstInfos();
         }else{
