@@ -4,7 +4,7 @@ angular.module('information.controllers', [])
 	$scope.modif = {weight:'', percentage:''};
 
 	$scope.getInfos = function () {
-		bodyUserService.getBodyUser().then(function(response){
+		bodyUserService.getBodyUser($scope.user.id).then(function(response){
 			$scope.weight = response.data.weight;
 			$scope.percentage = response.data.gracemass;
 			$ionicLoading.hide();
@@ -12,7 +12,7 @@ angular.module('information.controllers', [])
 			$ionicLoading.hide();
 		})
 
-	}
+	};
 
 	$ionicLoading.show();
 	$scope.getInfos();

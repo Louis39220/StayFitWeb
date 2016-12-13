@@ -121,12 +121,12 @@ angular.module('menu.controllers', [])
         }else{
           $scope.erreurSubscribe = true;
           $ionicLoading.hide();
-          $scope.suscribe();
+          $scope.subscribe();
         }
       }, function() {
         $scope.erreurSubscribe = true;
         $ionicLoading.hide();
-        $scope.suscribe();
+        $scope.subscribe();
       })
     }   
   };
