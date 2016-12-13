@@ -1,6 +1,6 @@
 angular.module('menu.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,userService,bodyUserService) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService) {
 
   $scope.erreurAuth = false;
   $scope.erreurSubscribe = false;
@@ -66,6 +66,8 @@ angular.module('menu.controllers', [])
   };
 
   $scope.doLogin = function(user) {
+      $scope.closeModal();
+      $ionicLoading.show();
       userService.authenticate(user)
 
       .then(function(response) {
@@ -76,13 +78,17 @@ angular.module('menu.controllers', [])
           $scope.user.isConnected=true;
           $scope.erreurAuth = false;
           console.log($scope.user);
+          $ionicLoading.hide();
           $scope.getInfos(response.id);
-          $scope.closeModal();
         }else{
           $scope.erreurAuth = true;
+          $ionicLoading.hide();
+          $scope.login();
         }
       }, function() {
         $scope.erreurAuth = true;
+        $ionicLoading.hide();
+        $scope.login();
       })   
   };
 
@@ -101,6 +107,8 @@ angular.module('menu.controllers', [])
 
   $scope.doSubscribe = function(newUser) {
     if (newUser.password == newUser.confirmPassword) {
+      $scope.closeModal();
+      $ionicLoading.show();
       userService.suscribe(newUser).then(function(response) {
         if (response.data != 0) {
           $scope.user.mail=newUser.mail;
@@ -108,13 +116,17 @@ angular.module('menu.controllers', [])
           $scope.user.isConnected=true;
           $scope.erreurSubscribe = false;
           console.log("suscribe ok");
-          $scope.closeModal();
+          $ionicLoading.hide();
           $scope.getFirstInfos();
         }else{
           $scope.erreurSubscribe = true;
+          $ionicLoading.hide();
+          $scope.suscribe();
         }
       }, function() {
         $scope.erreurSubscribe = true;
+        $ionicLoading.hide();
+        $scope.suscribe();
       })
     }   
   };
@@ -134,6 +146,8 @@ angular.module('menu.controllers', [])
 
   $scope.setFirstInfos = function(infos) {
     infos.id = $scope.user.id;
+    $scope.closeModal();
+    $ionicLoading.show();
     userService.setInfos(infos)
 
     .then(function(response) {
@@ -146,17 +160,22 @@ angular.module('menu.controllers', [])
           if (infos.size != null) $scope.user.size = infos.size;
           if (infos.weight != null) $scope.user.weight = infos.weight;
           $scope.erreurFirstInfos = false;
+          $ionicLoading.hide();
           console.log($scope.user);
-          $scope.closeModal();
         }else{
           $scope.erreurFirstInfos = true;
+          $ionicLoading.hide();
+          $scope.getFirstInfos
         }
       }, function() {
         $scope.erreurFirstInfos = true;
+        $ionicLoading.hide();
+        $scope.getFirstInfos
       })
   };
 
   $scope.getInfos = function(id) {
+    $ionicLoading.show();
     userService.getInfos($scope.user.id)
 
     .then(function(response) {
@@ -172,8 +191,10 @@ angular.module('menu.controllers', [])
         var birthdayArray = birthdayDash[0].split("-");
         var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
         $scope.user.birthday = birthday;
+        $ionicLoading.hide();
       }else{
         // TODO afficher erreur
+        $ionicLoading.hide();
       }
     })
   }
