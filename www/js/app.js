@@ -26,7 +26,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	is_coach: true,
   	is_dietitian: true,
     idgoal: null,
-    goal_image: "ressources/prisedemasse.jpg"
+    goal_image: "ressources/prisedemasse.jpg",
+    goal_description
   };
 
   $rootScope.bodyUser = {
@@ -39,7 +40,9 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     objectif: ''
   }
 
- /* $rootScope.goals =  [
+
+
+ /*$rootScope.goals =  [
     {'name' : 'Prise de masse', 'description' : 'description prise de masse', 'image' : 'ressources/prisedemasse.jpg'},
     {'name' : 'Maintien Musculaire', 'description' : 'description Maintien de poids', 'image' : 'ressources/maintien_musculaire.jpg'},
     {'name' : 'Seche Musculaire', 'description' : 'description Seche musculaire', 'image' : 'ressources/seche.jpg'}
@@ -55,7 +58,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       {'name' : 'Pompes', 'description' : 'Soyez bien gainé et effectué un mouvement de pompes', 'image' : 'ressources/sport/pompes.jpg', 'set' : '4', 'rep':'10','duration':'20'}
     ]},
     {'name' : 'Séance de course', 'objectif':'Maintien Musculaire', 'exercises' : [
-      {'name' : 'Course à pied', 'description' : 'Soyez bien gainé et effectué un mouvement de pompes', 'image' : 'ressources/sport/pompes.jpg', 'set' : '4', 'rep':'10','duration':'20'}
+      {'name' : 'Course à pied', 'description' : 'Effectué une course', 'image' : 'ressources/sport/course.png', 'set' : '4', 'rep':'10','duration':'20'}
     ]}
   ]
 

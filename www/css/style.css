@@ -38,3 +38,31 @@
 
 	text-align: center;
 }
+
+.item{
+  overflow: inherit ;
+  text-overflow: inherit ;
+  white-space: normal ;
+}
+
+.h1{
+  overflow: inherit ;
+  text-overflow: inherit ;
+  white-space: normal ;
+}
+.h2{
+  overflow: inherit ;
+  text-overflow: inherit ;
+  white-space: normal ;
+}
+.h3{
+  overflow: inherit ;
+  text-overflow: inherit ;
+  white-space: normal ;
+}
+
+.p{
+  overflow: inherit ;
+  text-overflow: inherit ;
+  white-space: normal ;
+}

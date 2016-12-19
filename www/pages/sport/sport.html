@@ -1,7 +1,6 @@
 <ion-view>
   <ion-content>
     <h1 class="center">Sport</h1>
-<ion-list>
 <!--
   <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
         Previous
@@ -10,38 +9,60 @@
     <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
         Next
      </button>
--->
-<ion-item ng-repeat="practise in practises" ng-show=(practise.objectif==user.goal) | limiTo =1> 
-<div class="item item-avatar">
-    <img src="ressources/excercice.png">
-      <h2>{{practise.name}}</h2>
-      <a href="#" OnClick="javascript:window.print()">Imprimer</a> 
+   -->
+   <label class="item item-input item-select">
+    <div class="input-label">
+      Séance :
     </div>
-    <!--<ion-checkbox ng-checked="excercise.checked" ng-disabled="excerice.checked" ng-click="changeExcercice(excerice)">
+    <select>
+      <option ng-click ng-repeat="practise in practises">{{practise.name}}</option>
+    </select>
+  </label>
+   <ion-item ng-repeat="practise in practises"> 
+    <div class="item item-thumbnail-left">
+      <img src="{{user.goal_image}}"> <!--TODO IMAGE-->
+      <h1>{{practise.name}}</h1>
+      <h2>//TODO affichage objectif</h2>
+      <button class="button button-stable" ng-click = "javascript:window.print()" >
+        imprimer
+      </button>
+    </div>
+    <!-- | limiTo =1     <ion-checkbox ng-checked="excercise.checked" ng-disabled="excerice.checked" ng-click="changeExcercice(excerice)">
           <label ng-if="!excerice.checked">Choisir ce programme</label>
           <label ng-if="excerice.checked">Programme choisi</label>
         </ion-checkbox>
-    -->
-  <ion-item ng-repeat="exercise in practise.exercises"> 
-      <div class="list card">
+      -->
+
+      
     <!--<div class="item item-body">
       <img class="full-image" ng-src="{{exercise.image}}" style="max-width: 300px;">
       <p>
        {{exercise.description}}
       </p>
     </div>-->
-  <div class="item item-thumbnail-left">
+    <div ng-repeat="exercise in practise.exercises" class="item item-thumbnail-left">
       <img src="{{exercise.image}}">
-        <h2>{{exercise.name}}</h2>
-        <p>Durée : {{exercise.duration}}</p>
-</div>
-   </ion-item>
+      <h2>{{exercise.name}}</h2>
+      <div class="row responsive-sm">
+        <div class="col">
+          <p>Durée : {{exercise.duration}} min </p>
+          <p>Nb de Set : {{exercise.set}} </p>
+          <p>Nb de Repetition : {{exercise.rep}} </p>
+      </div>
+        <div class="col">
+          <p>Leg : TODO </p>
+          <p>Arm  : TODO </p>
+          <p>Cheast : TODO </p>
+        </div>
+      </div>
+      
+      Description : {{exercise.description}}
+    </div>
+  </ion-item>
 
-</ion-item>
- </ion-list>
  <!--<button ng-click="loadNextPage()">
             Show More
-        </button> -->
-  </ion-content>
-</ion-view>
+          </button> -->
+        </ion-content>
+      </ion-view>
 
