@@ -67,6 +67,13 @@ angular.module('services', [])
 				url: 'http://localhost:8080/bodyUser/insert',
 				params: bodyUserAndId
 			})
+		},
+
+		getAllBodyUser: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://localhost:8080/bodyUser/find/' + id
+			})
 		}
 	}
 })

@@ -40,7 +40,6 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     image: ''
   }
 
-<<<<<<< HEAD
   goalService.getGoals()
   .then(function(response){
     console.log(response);
