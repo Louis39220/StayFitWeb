@@ -187,12 +187,12 @@ angular.module('menu.controllers', [])
       console.log(response);
       if (response.data != null) {
         $scope.user.firstName = response.data.firstName;
-        $scope.user.lastName = response.data.lastName;
+        $scope.user.lastName = response.data.lastname;
         $scope.user.sexe = response.data.sexe;
         $scope.user.is_coach = response.data.is_coach;
         $scope.user.is_dietitian = response.data.is_dietitian;
         $scope.user.size = response.data.size;
-        $scope.user.idgoal = response.data.goal;
+        $scope.user.idgoal = response.data.idGoal;
         console.log($scope.user);
         $scope.goal = $scope.goals[$scope.user.idgoal - 1];
         var birthdayDash = response.data.birthday.split(" ");
