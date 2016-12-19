@@ -161,7 +161,7 @@ angular.module('amChartsDirectiveExample',['amChartsDirective'])
                 }],
                 "chartScrollbar": {},
                 "chartCursor": {
-                    "categoryBalloonDateFormat": "DD/MM/YYYY",
+                    "categoryBalloonDateFormat": "YYYY-MM-DD",
                     "cursorAlpha": 0,
                     "cursorPosition": "mouse"
                 },

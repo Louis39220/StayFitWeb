@@ -1,5 +1,5 @@
 angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'information.controllers', 'services', 'amChartsDirectiveExample', 'ngMessages'])
-.run(function($ionicPlatform,$rootScope) {
+.run(function($ionicPlatform,$rootScope,goalService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -15,19 +15,17 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   });
 
   $rootScope.user = {
-  	mail:'test@mail.com',
-    id: null, 
+  	mail:'',
+    id: null,
   	isConnected:true, 
-  	firstName: "testfirstName", 
-  	lastName: "testlastName", 
-  	birthday: "13/01/1995",
-  	size: 193,
-    sexe: "Masculin",
+  	firstName: "", 
+  	lastName: "", 
+  	birthday: "",
+  	size: null,
+    sexe: "",
   	is_coach: true,
   	is_dietitian: true,
-    idgoal: null,
-    goal_image: "ressources/prisedemasse.jpg",
-    goal_description: "description"
+    idgoal: null
   };
 
   $rootScope.bodyUser = {
@@ -36,13 +34,21 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   };
 
   $rootScope.goal = {
-    id: null,
-    objectif: ''
+    idGoal: null,
+    description: '',
+    name:'',
+    image: ''
   }
 
+  goalService.getGoals()
+  .then(function(response){
+    console.log(response);
+    $rootScope.goals = response.data;
+  })
 
 
  /*$rootScope.goals =  [
+
     {'name' : 'Prise de masse', 'description' : 'description prise de masse', 'image' : 'ressources/prisedemasse.jpg'},
     {'name' : 'Maintien Musculaire', 'description' : 'description Maintien de poids', 'image' : 'ressources/maintien_musculaire.jpg'},
     {'name' : 'Seche Musculaire', 'description' : 'description Seche musculaire', 'image' : 'ressources/seche.jpg'}

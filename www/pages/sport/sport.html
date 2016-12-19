@@ -1,29 +1,23 @@
 <ion-view>
   <ion-content>
     <h1 class="center">Sport</h1>
-<!--
-  <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
-        Previous
-    </button>
-    {{currentPage+1}}/{{numberOfPages()}}
-    <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
-        Next
-     </button>
-   -->
+
    <label class="item item-input item-select">
     <div class="input-label">
       Séance :
     </div>
+   
     <select>
-      <option ng-click ng-repeat="practise in practises">{{practise.name}}</option>
+      <option ng-click ="choosePractise(practise)" ng-repeat="practise in practises">{{practise.name}}</option>
     </select>
+
   </label>
-   <ion-item ng-repeat="practise in practises"> 
+  <!-- <ion-item ng-repeat="practise in practises"> -->
     <div class="item item-thumbnail-left">
-      <img src="{{user.goal_image}}"> <!--TODO IMAGE-->
-      <h1>{{practise.name}}</h1>
-      <h2>//TODO affichage objectif</h2>
-      <button class="button button-stable" ng-click = "javascript:window.print()" >
+      <img src="{{goal.image}}"> <!--TODO IMAGE-->
+      <h1>{{selectedPractise.name}}</h1>
+      <h2>objectif : {{goal.name}}</h2>
+      <button class="button button-stable">
         imprimer
       </button>
     </div>
