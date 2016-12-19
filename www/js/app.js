@@ -25,8 +25,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     sexe: "Masculin",
   	is_coach: true,
   	is_dietitian: true,
-    goal:"Prise de masse", 
-    goal_description: "Description Prise de masse",
+    idgoal: null,
     goal_image: "ressources/prisedemasse.jpg"
   };
 
@@ -37,7 +36,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
 
   $rootScope.goal = {
     id: null,
-    objectif:"Prise de masse"
+    objectif: ''
   }
 })
 
