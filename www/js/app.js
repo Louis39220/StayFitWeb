@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   $rootScope.user = {
   	mail:'test@mail.com',
     id: null, 
-  	isConnected:true, 
+  	isConnected:false, 
   	firstName: "testfirstName", 
   	lastName: "testlastName", 
   	birthday: "13/01/1995",
@@ -27,7 +27,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	is_dietitian: true,
     idgoal: null,
     goal_image: "ressources/prisedemasse.jpg",
-    goal_description
+    goal_description: "description"
   };
 
   $rootScope.bodyUser = {
