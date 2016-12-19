@@ -20,6 +20,11 @@ angular.module('menu.controllers', [])
     $state.go('app.sport');
   };
 
+  $scope.goToWelcome = function(){
+    $state.go('app.welcome');
+
+  };
+
   $scope.goToNutrition = function() {
 
     $state.go('app.nutrition');

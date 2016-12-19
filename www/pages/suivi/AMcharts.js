@@ -125,49 +125,22 @@ angular.module('amChartsDirectiveExample',['amChartsDirective'])
                 "marginLeft": 20,
                 "pathToImages": "/lib/amcharts/images/",
                 "dataProvider": [{
-                    "date": "20-10-1950",
+                    "date": AmCharts.stringToDate("01-11-2014", "DD-MM-YYYY"),
                     "value": 17
                 }, {
-                    "date": "21-10-1950",
+                    "date": AmCharts.stringToDate("01-12-2014", "DD-MM-YYYY"),
                     "value": 20
                 }, {
-                    "date": "22-10-1950",
+                    "date": AmCharts.stringToDate("10-10-2014", "DD-MM-YYYY"),
                     "value": 20
                 }, {
-                    "date": "23-10-1950",
+                    "date": AmCharts.stringToDate("11-10-2014", "DD-MM-YYYY"),
                     "value": 20
                 }, {
-                    "date": "25-10-1950",
+                    "date": AmCharts.stringToDate("21-10-2014", "DD-MM-YYYY"),
                     "value": 20
-                }, {
-                    "date": "26-10-1950",
-                    "value": 21
-                }, {
-                    "date": "27-10-1950",
-                    "value": 22
-                }, {
-                    "date": "28-10-1950",
-                    "value": 20
-                }, {
-                    "date": "30-10-1950",
-                    "value": 20
-                }, {
-                    "date": "03-11-1950",
-                    "value": 19
-                }, {
-                    "date": "10-11-1950",
-                    "value": 18
-                }, {
-                    "date": "22-11-1950",
-                    "value": 17
-                }, {
-                    "date": "25-11-1950",
-                    "value": 18
-                }, {
-                    "date": "02-12-1950",
-                    "value": 18
                 },  {
-                    "date": "19-10-1950",
+                    "date": AmCharts.stringToDate("06-10-2014", "DD-MM-YYYY"),
                     "value": 19
                 }],
                 "valueAxes": [{
@@ -188,14 +161,14 @@ angular.module('amChartsDirectiveExample',['amChartsDirective'])
                 }],
                 "chartScrollbar": {},
                 "chartCursor": {
-                    "categoryBalloonDateFormat": "DD-MM-YYYY",
+                    "categoryBalloonDateFormat": "DD/MM/YYYY",
                     "cursorAlpha": 0,
                     "cursorPosition": "mouse"
                 },
-                "dataDateFormat": "DD-MM-YYYY",
+                "dataDateFormat": "DD/MM/YYYY",
                 "categoryField": "date",
                 "categoryAxis": {
-                    "minPeriod": "DD-MM-YYYY",
+                    "minPeriod": "DD/MM/YYYY",
                     "parseDates": true,
                     "minorGridAlpha": 0.1,
                     "minorGridEnabled": true

@@ -3,14 +3,14 @@
  <h1 class="center">Objectif </h1>
 
  <ion-list ng-controller="ObjectifCtrl">
-  <ion-item ng-repeat="objectif in ListObjectif">
+  <ion-item ng-repeat="objectif in goals">
     <div class="list card">
   <div class="item item-avatar">
   <img src="ressources/objectif.png">
     <h2>{{objectif.name}}</h2>
   </div>
   <div class="item item-body">
-    <img class="full-image" ng-src="{{objectif.image}}">
+    <img class="full-image" ng-src="{{objectif.image}}" style="max-width: 800px;">
     
     <p>
      {{objectif.description}}

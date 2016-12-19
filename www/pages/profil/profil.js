@@ -1,7 +1,7 @@
 angular.module('profil.controllers', [])
 
 .controller('ProfilCtrl', function($scope,userService) {
-	console.log('ProfilCtrl');
+	//console.log('ProfilCtrl');
 	$scope.modif = {firstName:'', lastName:'', birthday:'', sexe:'', showModification: false};
 
 // marche pas

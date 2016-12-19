@@ -22,7 +22,7 @@
   <!-- Side Menu (left) -->
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title" ng-if="!user.isConnected">Mon Compte</h1><h1 class="title" ng-if="user.isConnected">{{user.mail}}</h1>
+      <h1 class="title" ng-click="goToWelcome()" ng-if="!user.isConnected">Mon Compte</h1><h1 class="title"  ng-click="goToWelcome()" ng-if="user.isConnected">{{user.mail}}</h1>
     </ion-header-bar>
     <ion-content scroll="false">
       <ion-list>

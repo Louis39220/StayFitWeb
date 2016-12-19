@@ -59,3 +59,22 @@ angular.module('services', [])
 		}
 	}
 })
+
+.factory('SportService', function($http) {
+	return {
+		getBodyUser: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://localhost:8080/bodyUser/find/'+id
+			})
+		},
+
+		setBodyUser: function(bodyUser){
+			return $http({
+				method: 'POST',
+				url: 'http://localhost:8080/bodyUser/create/',
+				params: bodyUser
+			})
+		}
+	}
+})
