@@ -3,9 +3,10 @@ angular.module('sport', [])
 
 	//affichage par page
 	$scope.currentPage = 1;
+	DEFAULT_PAGE_SIZE_STEP =3;
   	$scope.pageSize = $scope.currentPage * DEFAULT_PAGE_SIZE_STEP;  
 
-	$scope.exercices = exercices;
+	//$scope.exercices = exercices;
 	$scope.chooseExcercice = chooseExcercice;
 	$scope.loadNextPage = loadNextPage;
 
@@ -22,10 +23,10 @@ angular.module('sport', [])
 			}
 		});
 	}
-
-
-  
-  
+ 
+  	function print (){
+  		window.print();
+  	}
   
    function loadNextPage () {
     $scope.currentPage++;
