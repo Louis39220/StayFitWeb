@@ -1,38 +1,24 @@
-
-
-'use strict';
-
-angular
-	.module('sport')
-	.controller('SportCtrl', SportCtrl);
-
-SportCtrl.$inject = ['exercices'];
-
-function SportCtrl (exercices) {
-
-	var vm = this;
-
-	//variable 
-	var DEFAULT_PAGE_SIZE_STEP = 1;
+angular.module('sport', [])
+.controller('SportCtrl', function($scope){
 
 	//affichage par page
-	vm.currentPage = 1;
-  	vm.pageSize = vm.currentPage * DEFAULT_PAGE_SIZE_STEP;  
+	$scope.currentPage = 1;
+  	$scope.pageSize = $scope.currentPage * DEFAULT_PAGE_SIZE_STEP;  
 
-	vm.exercices = exercices;
-	vm.chooseExcercice = chooseExcercice;
-	vm.loadNextPage = loadNextPage;
+	$scope.exercices = exercices;
+	$scope.chooseExcercice = chooseExcercice;
+	$scope.loadNextPage = loadNextPage;
 
 
 
 	// Quand on sélectionne des exercicez
 	function chooseExcercice (exercice) {
 
-		vm.excercices.forEach(function(item,index) {
+		$scope.excercices.forEach(function(item,index) {
 			if (exercice != item) {
-				vm.excercices[index].checked = false;
+				$scope.excercices[index].checked = false;
 			}else{
-				vm.excercices[index].checked = true;
+				$scope.excercices[index].checked = true;
 			}
 		});
 	}
@@ -42,13 +28,13 @@ function SportCtrl (exercices) {
   
   
    function loadNextPage () {
-    vm.currentPage++;
-    vm.pageSize = vm.currentPage * DEFAULT_PAGE_SIZE_STEP;
+    $scope.currentPage++;
+    $scope.pageSize = $scope.currentPage * DEFAULT_PAGE_SIZE_STEP;
   }
 	
 
 
-}
+});
 
 
 

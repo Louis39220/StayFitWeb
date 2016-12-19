@@ -39,11 +39,11 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     objectif: ''
   }
 
-  $rootScope.goals =  [
+ /* $rootScope.goals =  [
     {'name' : 'Prise de masse', 'description' : 'description prise de masse', 'image' : 'ressources/prisedemasse.jpg'},
     {'name' : 'Maintien Musculaire', 'description' : 'description Maintien de poids', 'image' : 'ressources/maintien_musculaire.jpg'},
     {'name' : 'Seche Musculaire', 'description' : 'description Seche musculaire', 'image' : 'ressources/seche.jpg'}
-  ]
+  ]*/
 
   $rootScope.practises =  [
     {'name' : 'Séance Hypertrophie', 'objectif' : 'Prise de masse','exercises' : [
@@ -129,12 +129,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       views: {
         'menuContent': {
           templateUrl: 'pages/sport/sport.html',
-          controller: 'SportCtrl as vm',
-          resolve : {
-            'exercices' : function () {
-              return ['test', 'rest'];
-            }
-          }
+          controller: 'SportCtrl'
         }
       }
     })

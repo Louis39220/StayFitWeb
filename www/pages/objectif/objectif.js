@@ -8,10 +8,10 @@ angular.module('objectif.controllers', [])
 		// TODO récuperer la liste d'objectifs
 		goalService.getGoals()
 		.then(function(response){
-			$scope.ListObjectif = response.data;
+			$scope.goals = response.data;
 			console.log(response);
 			// for each sur les objectifs pour cocher l'objectif que suit l'utilisateur
-			$scope.ListObjectif.forEach(function(item) {
+			$scope.goals.forEach(function(item) {
 				if (item.idGoal == $scope.user.idgoal) {
 					item.checked = true;
 				}
