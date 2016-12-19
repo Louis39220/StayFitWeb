@@ -46,15 +46,15 @@ angular.module('services', [])
 		getBodyUser: function(id){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8080/bodyUser/find/'+id
+				url: 'http://localhost:8080/bodyUser/findLast/'+id
 			})
 		},
 
-		setBodyUser: function(bodyUser){
+		setBodyUser: function(bodyUserAndId){
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/bodyUser/create/',
-				params: bodyUser
+				url: 'http://localhost:8080/bodyUser/insert',
+				params: bodyUserAndId
 			})
 		}
 	}
