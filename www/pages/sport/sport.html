@@ -1,35 +1,49 @@
 <ion-view>
   <ion-content>
-    <h1 class="customTitle">Sport</h1>
-<ion-list ng-controller="SportCtrl">
+    <h1 class="center">Sport</h1>
+<ion-list>
 <div class="item item-thumbnail-left">
       <img src="{{user.goal_image}}">
         <h1> Objectif : {{user.goal}}</h1>
-      </div>
-  <ion-item ng-repeat="objectif in ListObjectif">
-    <div class="list card">
-  <div class="item item-avatar">
-  <img src="ressources/objectif.png">
-    <h2>{{objectif.name}}</h2>
-  </div>
-  <div class="item item-body">
-    <img class="full-image" ng-src="{{objectif.image}}">
-    
-    <p>
-     {{objectif.description}}
-
-    </p>
-    <p>
-    	<ion-checkbox ng-checked="objectif.checked" ng-disabled="objectif.checked" ng-click="changeObjectif(objectif)">
-        <label ng-if="!objectif.checked">Choisir ce programme</label>
-        <label ng-if="objectif.checked">Vous suivez ce programme</label>
-      </ion-checkbox>
-
-    </p>
-  </div>
+        <p>Voici les exercices adaptés à cet objectif : {{user.goal_description}}</p>
 </div>
- </ion-item>
+
+  <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+        Previous
+    </button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+        Next
+     </button>
+
+<ion-item ng-repeat="practise in practises" ng-show=(practise.objectif==user.goal) | limiTo =1> 
+<div class="item item-avatar">
+    <img src="ressources/excercice.png">
+      <h2>{{practise.name}}</h2>
+    </div>
+    <ion-checkbox ng-checked="excerice.checked" ng-disabled="excerice.checked" ng-click="changeExcercice(excerice)">
+          <label ng-if="!excerice.checked">Choisir ce programme</label>
+          <label ng-if="excerice.checked">Programme choisi</label>
+        </ion-checkbox>
+
+  <ion-item ng-repeat="excerice in excerices"> 
+      <div class="list card">
+      <h2>{{excerice.name}}</h2>
+    <div class="item item-body">
+      <img class="full-image" ng-src="{{excerice.image}}" style="max-width: 300px;">
+      
+      <p>
+       {{excerice.description}}
+
+      </p>
+    </div>
+   </ion-item>
+
+</ion-item>
  </ion-list>
+ <button ng-click="loadNextPage()">
+            Show More
+        </button>
   </ion-content>
 </ion-view>
 
