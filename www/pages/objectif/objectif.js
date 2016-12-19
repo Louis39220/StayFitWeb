@@ -1,18 +1,23 @@
 angular.module('objectif.controllers', [])
 
-.controller('ObjectifCtrl', function($scope) {
+.controller('ObjectifCtrl', function($scope,$ionicLoading,goalService) {
 
 	$scope.init = function () {
 
+		$ionicLoading.show();
 		// TODO récuperer la liste d'objectifs
-		
-
-		// for each sur les objectifs pour cocher l'objectif que suit l'utilisateur
-		$scope.goals.forEach(function(item) {
-			if (item.name == $scope.goal.objectif) {
-				item.checked = true;
-			}
-		});
+		goalService.getGoals()
+		.then(function(response){
+			$scope.goals = response.data;
+			console.log(response);
+			// for each sur les objectifs pour cocher l'objectif que suit l'utilisateur
+			$scope.goals.forEach(function(item) {
+				if (item.idGoal == $scope.user.idgoal) {
+					item.checked = true;
+				}
+			});
+			$ionicLoading.hide();
+		})
 	}
 
 	$scope.init();

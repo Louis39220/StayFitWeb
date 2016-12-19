@@ -37,6 +37,13 @@ angular.module('services', [])
 				method: 'GET',
 				url: 'http://localhost:8080/user/find/'+id
 			})
+		},
+
+		setGoal: function(user){
+			return $http({
+				method: 'GET',
+				url: 'http://localhost:8080/user/setGoal/'+id
+			})
 		}
 	}
 })
@@ -55,6 +62,32 @@ angular.module('services', [])
 				method: 'POST',
 				url: 'http://localhost:8080/bodyUser/insert',
 				params: bodyUserAndId
+			})
+		}
+	}
+})
+
+.factory('goalService', function($http) {
+	return {
+		getGoals: function(){
+			return $http({
+				method: 'GET',
+				url: 'http://localhost:8080/goal'
+			})
+		},
+
+		getGoal: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://localhost:8080/goal/find/'+id
+			})
+		},
+
+		setGoal: function(idGoal){
+			return $http({
+				method: 'POST',
+				url: 'http://localhost:8080/user/setgoal',
+				params: idGoal
 			})
 		}
 	}

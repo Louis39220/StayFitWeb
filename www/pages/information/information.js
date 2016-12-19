@@ -7,7 +7,7 @@ angular.module('information.controllers', [])
 		bodyUserService.getBodyUser($scope.user.id).then(function(response){
 			console.log(response);
 			$scope.bodyUser.weight = response.data.weight;
-			$scope.bodyUser.gracemass = response.data.gracemass;
+			$scope.bodyUser.gracemass = response.data.graceMasse;
 			$ionicLoading.hide();
 		}, function(){
 			$ionicLoading.hide();

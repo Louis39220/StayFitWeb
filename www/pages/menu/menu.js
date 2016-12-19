@@ -192,6 +192,7 @@ angular.module('menu.controllers', [])
         $scope.user.is_coach = response.data.is_coach;
         $scope.user.is_dietitian = response.data.is_dietitian;
         $scope.user.size = response.data.size;
+        $scope.user.idgoal = response.data.goal;
         var birthdayDash = response.data.birthday.split(" ");
         var birthdayArray = birthdayDash[0].split("-");
         var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
