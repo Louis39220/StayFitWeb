@@ -17,7 +17,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   $rootScope.user = {
   	mail:'test@mail.com',
     id: null, 
-  	isConnected:false, 
+  	isConnected:true, 
   	firstName: "testfirstName", 
   	lastName: "testlastName", 
   	birthday: "13/01/1995",
