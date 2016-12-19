@@ -40,9 +40,13 @@ angular.module('services', [])
 		},
 
 		setGoal: function(user){
+			var data = {id: user.id, idgoal: user.idgoal};
+			console.log(data);
+			console.log(user);
 			return $http({
-				method: 'GET',
-				url: 'http://localhost:8080/user/setGoal/'+id
+				method: 'POST',
+				url: 'http://localhost:8080/user/setgoal',
+				params: data
 			})
 		}
 	}

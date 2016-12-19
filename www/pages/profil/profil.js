@@ -1,6 +1,6 @@
 angular.module('profil.controllers', [])
 
-.controller('ProfilCtrl', function($scope,userService) {
+.controller('ProfilCtrl', function($scope,$ionicLoading,userService) {
 	//console.log('ProfilCtrl');
 	$scope.modif = {firstName:'', lastName:'', birthday:'', sexe:'', showModification: false};
 
