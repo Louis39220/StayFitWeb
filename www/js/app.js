@@ -32,7 +32,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
 
   $rootScope.bodyUser = {
     weight: 0,
-    percentage: 0
+    gracemass: 0
   };
 
   $rootScope.goal = {
