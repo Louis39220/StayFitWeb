@@ -5,7 +5,7 @@ angular.module('objectif.controllers', [])
 	$scope.init = function () {
 			// for each sur les objectifs pour cocher l'objectif que suit l'utilisateur
 			$scope.goals.forEach(function(item) {
-				if (item.idGoal == $scope.user.idgoal) {
+				if (item.idGoal == $scope.user.idGoal) {
 					item.checked = true;
 				}else{
 					item.checked = false;
@@ -18,10 +18,8 @@ angular.module('objectif.controllers', [])
 	// Quand on sélectionne un nouvel objectif, on décoche les autres
 	$scope.changeObjectif = function(objectif) {
 		$ionicLoading.show();
-		console.log(objectif);
-		//$scope.goal = objectif;
-		$scope.user.idgoal = objectif.idGoal;
-		$scope.goal.idgoal = objectif.idGoal;
+		$scope.user.idGoal = objectif.idGoal;
+		$scope.goal.idGoal = objectif.idGoal;
 		$scope.goal.description = objectif.description;
 		$scope.goal.name = objectif.name;
 		$scope.goal.image = objectif.image;

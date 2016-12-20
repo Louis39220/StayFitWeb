@@ -14,45 +14,6 @@ angular.module('amChartsDirectiveExample',['amChartsDirective'])
                 var initChart = function() {
                   if (chart) chart.destroy();
                   var config = scope.config || {};
-<<<<<<< HEAD
-                   chart = AmCharts.makeChart("chartdiv", {
-
-                        "dataProvider": scope.weights,
-                        "type": "serial",
-                        "marginLeft": 20,
-                        "pathToImages": "/lib/amcharts/images/",
-                        "categoryField": "date",
-                        "dataDateFormat": "YYYY-MM-DD",
-                        "categoryAxis": {
-                            "minPeriod": "YYYY-MM-DD",
-                            "parseDates": true,
-                            "minorGridAlpha": 0.1,
-                            "minorGridEnabled": true
-                        },
-                        "trendLines": [],
-                        "graphs": [
-                            {
-                                "bullet": "round",
-                                "id": "AmGraph-1",
-                                "title": "evolution",
-                                "valueField": "weight"
-                            }
-                        ],
-                        "valueAxes": [
-                            {
-                                "id": "ValueAxis-1",
-                                "title": "Poids",
-                                "axisAlpha": 0,
-                                "inside": true,
-                                "position": "left"
-                            }
-                        ],
-                        "allLabels": [],
-                        "balloon": {}
-                    });
-
-
-=======
                    chart = AmCharts.makeChart("chartdiv",
         {
           "type": "serial",
@@ -133,7 +94,6 @@ angular.module('amChartsDirectiveExample',['amChartsDirective'])
           ]
         }
       );
->>>>>>> e074d32d9c03077b81a23f25438bdd67de46d2cd
                     
                         
                 };

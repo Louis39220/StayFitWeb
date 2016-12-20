@@ -25,7 +25,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     sexe: "",
   	is_coach: true,
   	is_dietitian: true,
-    idgoal: null
+    idGoal: null
   };
 
   $rootScope.bodyUser = {
@@ -124,7 +124,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       url: '/',
       views: {
         'menuContent': {
-          templateUrl: 'pages/objectif/objectif.html'
+          templateUrl: 'pages/objectif/objectif.html',
+          controller: 'ObjectifCtrl'
         }
       }
     })

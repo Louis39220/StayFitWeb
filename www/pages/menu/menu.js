@@ -192,9 +192,11 @@ angular.module('menu.controllers', [])
         $scope.user.is_coach = response.data.is_coach;
         $scope.user.is_dietitian = response.data.is_dietitian;
         $scope.user.size = response.data.size;
-        $scope.user.idgoal = response.data.idGoal;
+        $scope.user.idGoal = response.data.idGoal;
         console.log($scope.user);
-        $scope.goal = $scope.goals[$scope.user.idgoal - 1];
+        if ($scope.user.idGoal){
+          $scope.goal = $scope.goals[$scope.user.idGoal - 1];
+        }
         var birthdayDash = response.data.birthday.split(" ");
         var birthdayArray = birthdayDash[0].split("-");
         var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
@@ -202,7 +204,6 @@ angular.module('menu.controllers', [])
         $ionicLoading.hide();
         bodyUserService.getAllBodyUser($scope.user.id)
         .then(function(response){
-          console.log(response);
           $scope.bodyUsers = response.data;
           $scope.bodyUsers.forEach(function(item){
             item.recordDate = item.recordDate.split(" ")[0];
