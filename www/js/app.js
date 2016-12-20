@@ -16,7 +16,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
 
   $rootScope.user = {
   	mail:'',
-    id: null, 
+    id: null,
   	isConnected:false, 
   	firstName: "", 
   	lastName: "", 
@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
 
   $rootScope.goal = {
     idGoal: null,
-    objectif: '',
+    description: '',
     name:'',
     image: ''
   }
@@ -49,14 +49,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     $rootScope.goals = response.data;
   })
 
-
-
- /* $rootScope.goals =  [
-=======
-
-
  /*$rootScope.goals =  [
->>>>>>> eded040bdfd8ec9a0fe6abf3caa621626c1a05cd
+
     {'name' : 'Prise de masse', 'description' : 'description prise de masse', 'image' : 'ressources/prisedemasse.jpg'},
     {'name' : 'Maintien Musculaire', 'description' : 'description Maintien de poids', 'image' : 'ressources/maintien_musculaire.jpg'},
     {'name' : 'Seche Musculaire', 'description' : 'description Seche musculaire', 'image' : 'ressources/seche.jpg'}

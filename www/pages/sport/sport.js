@@ -2,14 +2,15 @@ angular.module('sport', [])
 .controller('SportCtrl', function($scope){
 
 	//affichage par page
-	$scope.currentPage = 1;
-	DEFAULT_PAGE_SIZE_STEP =3;
-  	$scope.pageSize = $scope.currentPage * DEFAULT_PAGE_SIZE_STEP;  
+	$scope.selectedPractise;
 
 	//$scope.exercices = exercices;
 	$scope.chooseExcercice = chooseExcercice;
 	$scope.loadNextPage = loadNextPage;
 
+	$scope.choosePractise = function (practise){
+		console.log(practise);
+	}
 
 
 	// Quand on sélectionne des exercicez
