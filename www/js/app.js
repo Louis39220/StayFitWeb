@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'information.controllers', 'services', 'amChartsDirectiveExample', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'information.controllers', 'services', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope,goalService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -40,11 +40,16 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     image: ''
   }
 
+  $rootScope.bodyUsers = [];
+  $rootScope.weights = [];
+
   goalService.getGoals()
   .then(function(response){
     console.log(response);
     $rootScope.goals = response.data;
   })
+
+
 
  /* $rootScope.goals =  [
 =======

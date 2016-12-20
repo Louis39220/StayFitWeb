@@ -200,6 +200,15 @@ angular.module('menu.controllers', [])
         var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
         $scope.user.birthday = birthday;
         $ionicLoading.hide();
+        bodyUserService.getAllBodyUser($scope.user.id)
+        .then(function(response){
+          console.log(response);
+          $scope.bodyUsers = response.data;
+          $scope.bodyUsers.forEach(function(item){
+            item.recordDate = item.recordDate.split(" ")[0];
+            $scope.weights.push({date: item.recordDate, weight: item.weight.toString()});
+          });
+        });
       }else{
         // TODO afficher erreur
         $ionicLoading.hide();
