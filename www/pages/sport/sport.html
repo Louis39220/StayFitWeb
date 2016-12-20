@@ -7,8 +7,8 @@
       Séance :
     </div>
    
-    <select>
-      <option ng-click ="choosePractise(practise)" ng-repeat="practise in practises">{{practise.name}}</option>
+    <select ng-model="selectedPractise" ng-options="practise as practise.name for practise in practises">
+      <option value="" disabled selected">Selectionner votre séance</option>  
     </select>
 
   </label>
@@ -34,7 +34,7 @@
        {{exercise.description}}
       </p>
     </div>-->
-    <div ng-repeat="exercise in practise.exercises" class="item item-thumbnail-left">
+    <div ng-repeat="exercise in selectedPractise.exercises" class="item item-thumbnail-left">
       <img src="{{exercise.image}}">
       <h2>{{exercise.name}}</h2>
       <div class="row responsive-sm">
@@ -42,11 +42,16 @@
           <p>Durée : {{exercise.duration}} min </p>
           <p>Nb de Set : {{exercise.set}} </p>
           <p>Nb de Repetition : {{exercise.rep}} </p>
-      </div>
+        </div>
         <div class="col">
           <p>Leg : TODO </p>
           <p>Arm  : TODO </p>
           <p>Cheast : TODO </p>
+        </div>
+        <div class="col">
+          <p>Abs : TODO </p>
+          <p>Back  : TODO </p>
+          <p>Shoulder : TODO </p>
         </div>
       </div>
       
