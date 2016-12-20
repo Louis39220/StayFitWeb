@@ -61,7 +61,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       {'name' : 'Pompes', 'description' : 'Soyez bien gainé et effectué un mouvement de pompes', 'image' : 'ressources/sport/pompes.jpg', 'set' : '4', 'rep':'10','duration':'20'}
     ]}, 
     {'name' : 'Séance de seche', 'objectif':'Seche Musculaire','exercises' :[
-      {'name' : 'Pompes', 'description' : 'Soyez bien gainé et effectué un mouvement de pompes', 'image' : 'ressources/sport/pompes.jpg', 'set' : '4', 'rep':'10','duration':'20'}
+      {'name' : 'Pompes', 'description' : 'Soyez bien gainé et effectué un mouvement de pompes', 'image' : 'ressources/sport/pompes.jpg', 'set' : '4', 'rep':'10','duration':'20', 'cheastDifficulty':'3', 'legDifficulty':'0'}
     ]},
     {'name' : 'Séance de course', 'objectif':'Maintien Musculaire', 'exercises' : [
       {'name' : 'Course à pied', 'description' : 'Effectué une course', 'image' : 'ressources/sport/course.png', 'set' : '4', 'rep':'10','duration':'20'}

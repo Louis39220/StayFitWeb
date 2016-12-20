@@ -21,7 +21,7 @@ angular.module('objectif.controllers', [])
 		console.log(objectif);
 		//$scope.goal = objectif;
 		$scope.user.idgoal = objectif.idGoal;
-		$scope.goal.idgoal = objectif.idGoal;
+		$scope.goal.idGoal = objectif.idGoal;
 		$scope.goal.description = objectif.description;
 		$scope.goal.name = objectif.name;
 		$scope.goal.image = objectif.image;
