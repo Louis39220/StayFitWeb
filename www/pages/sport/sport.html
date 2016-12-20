@@ -14,26 +14,14 @@
   </label>
   <!-- <ion-item ng-repeat="practise in practises"> -->
     <div class="item item-thumbnail-left">
-      <img src="{{goal.image}}"> <!--TODO IMAGE-->
+      <img src="{{goal.image}}">
       <h1>{{selectedPractise.name}}</h1>
       <h2>objectif : {{goal.name}}</h2>
       <button class="button button-stable">
         imprimer
       </button>
     </div>
-    <!-- | limiTo =1     <ion-checkbox ng-checked="excercise.checked" ng-disabled="excerice.checked" ng-click="changeExcercice(excerice)">
-          <label ng-if="!excerice.checked">Choisir ce programme</label>
-          <label ng-if="excerice.checked">Programme choisi</label>
-        </ion-checkbox>
-      -->
-
-      
-    <!--<div class="item item-body">
-      <img class="full-image" ng-src="{{exercise.image}}" style="max-width: 300px;">
-      <p>
-       {{exercise.description}}
-      </p>
-    </div>-->
+    
     <div ng-repeat="exercise in selectedPractise.exercises" class="item item-thumbnail-left">
       <img src="{{exercise.image}}">
       <h2>{{exercise.name}}</h2>
@@ -58,10 +46,6 @@
       Description : {{exercise.description}}
     </div>
   </ion-item>
-
- <!--<button ng-click="loadNextPage()">
-            Show More
-          </button> -->
         </ion-content>
       </ion-view>
 

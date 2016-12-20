@@ -14,88 +14,86 @@ angular.module('amChartsDirectiveExample',['amChartsDirective'])
                 var initChart = function() {
                   if (chart) chart.destroy();
                   var config = scope.config || {};
-                   chart = AmCharts.makeChart("chartdiv", {
-                "type": "serial",
-                "theme": "none",
-                "marginLeft": 20,
-                "pathToImages": "/lib/amcharts/images/",
-                "dataProvider": [{
-                    "year": "1950",
-                    "value": 85
-                }, {
-                    "year": "1951",
-                    "value": 90
-                }, {
-                    "year": "1952",
-                    "value": 93
-                }, {
-                    "year": "1953",
-                    "value": 100
-                }, {
-                    "year": "1954",
-                    "value": 103
-                }, {
-                    "year": "1955",
-                    "value": 100
-                }, {
-                    "year": "1956",
-                    "value": 95
-                }, {
-                    "year": "1957",
-                    "value": 90
-                }, {
-                    "year": "1958",
-                    "value": 92
-                }, {
-                    "year": "1959",
-                    "value": 93
-                }, {
-                    "year": "1960",
-                    "value": 94
-                }, {
-                    "year": "1961",
-                    "value": 95
-                }, {
-                    "year": "1962",
-                    "value": 95
-                }, {
-                    "year": "1963",
-                    "value": 87
-                },  {
-                    "year": "2005",
-                    "value": 100
-                }],
-                "valueAxes": [{
-                    "axisAlpha": 0,
-                    "inside": true,
-                    "position": "left",
-                    "ignoreAxisWidth": true
-                }],
-                "graphs": [{
-                    "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-                    "bullet": "round",
-                    "bulletSize": 6,
-                    "lineColor": "#d1655d",
-                    "lineThickness": 2,
-                    "negativeLineColor": "#637bb6",
-                    "type": "smoothedLine",
-                    "valueField": "value"
-                }],
-                "chartScrollbar": {},
-                "chartCursor": {
-                    "categoryBalloonDateFormat": "YYYY",
-                    "cursorAlpha": 0,
-                    "cursorPosition": "mouse"
-                },
-                "dataDateFormat": "YYYY",
-                "categoryField": "year",
-                "categoryAxis": {
-                    "minPeriod": "YYYY",
-                    "parseDates": true,
-                    "minorGridAlpha": 0.1,
-                    "minorGridEnabled": true
-                }
-            });
+                   chart = AmCharts.makeChart("chartdiv",
+        {
+          "type": "serial",
+          "categoryField": "date",
+          "dataDateFormat": "YYYY-MM-DD",
+          "theme": "default",
+          "categoryAxis": {
+            "parseDates": true
+          },
+          "chartCursor": {
+            "enabled": true
+          },
+          "chartScrollbar": {
+            "enabled": true
+          },
+          "trendLines": [],
+          "graphs": [
+            {
+              "bullet": "round",
+              "id": "AmGraph-1",
+              "title": "graph 1",
+              "valueField": "Poids"
+            },
+            {
+              "bullet": "square",
+              "id": "AmGraph-2",
+              "title": "graph 2",
+              "valueField": "column-2"
+            }
+          ],
+          "guides": [],
+          "valueAxes": [
+            {
+              "id": "ValueAxis-1",
+              "title": "Axis title"
+            }
+          ],
+          "allLabels": [],
+          "balloon": {
+            "animationDuration": 0.38
+          },
+          "titles": [
+            {
+              "id": "Title-1",
+              "size": 15,
+              "text": "Chart Title"
+            }
+          ],
+          "dataProvider": [
+            {
+              "date": "2014-03-01",
+              "Poids": 8
+            },
+            {
+              "date": "2014-03-02",
+              "Poids": 6
+            },
+            {
+              "date": "2014-03-03",
+              "Poids": 2
+            },
+            {
+              "date": "2014-03-04",
+              "Poids": 1
+            },
+            {
+              "date": "2014-03-05",
+              "Poids": 2
+            },
+            {
+              "date": "2014-03-06",
+              "Poids": 3
+            },
+            {
+              "date": "2014-03-07",
+              "Poids": 6
+            }
+          ]
+        }
+      );
                     
                         
                 };
@@ -119,61 +117,86 @@ angular.module('amChartsDirectiveExample',['amChartsDirective'])
                 var initChart = function() {
                   if (chart) chart.destroy();
                   var config = scope.config || {};
-                   chart = AmCharts.makeChart("chartdiv2", {
-                "type": "serial",
-                "theme": "none",
-                "marginLeft": 20,
-                "pathToImages": "/lib/amcharts/images/",
-                "dataProvider": [{
-                    "date": AmCharts.stringToDate("01-11-2014", "DD-MM-YYYY"),
-                    "value": 17
-                }, {
-                    "date": AmCharts.stringToDate("01-12-2014", "DD-MM-YYYY"),
-                    "value": 20
-                }, {
-                    "date": AmCharts.stringToDate("10-10-2014", "DD-MM-YYYY"),
-                    "value": 20
-                }, {
-                    "date": AmCharts.stringToDate("11-10-2014", "DD-MM-YYYY"),
-                    "value": 20
-                }, {
-                    "date": AmCharts.stringToDate("21-10-2014", "DD-MM-YYYY"),
-                    "value": 20
-                },  {
-                    "date": AmCharts.stringToDate("06-10-2014", "DD-MM-YYYY"),
-                    "value": 19
-                }],
-                "valueAxes": [{
-                    "axisAlpha": 0,
-                    "inside": true,
-                    "position": "left",
-                    "ignoreAxisWidth": true
-                }],
-                "graphs": [{
-                    "balloonText": "[[category]]<br><b><span style='font-size:14px;'>[[value]]</span></b>",
-                    "bullet": "round",
-                    "bulletSize": 6,
-                    "lineColor": "#d1655d",
-                    "lineThickness": 2,
-                    "negativeLineColor": "#637bb6",
-                    "type": "smoothedLine",
-                    "valueField": "value"
-                }],
-                "chartScrollbar": {},
-                "chartCursor": {
-                    "categoryBalloonDateFormat": "YYYY-MM-DD",
-                    "cursorAlpha": 0,
-                    "cursorPosition": "mouse"
-                },
-                "dataDateFormat": "DD/MM/YYYY",
-                "categoryField": "date",
-                "categoryAxis": {
-                    "minPeriod": "DD/MM/YYYY",
-                    "parseDates": true,
-                    "minorGridAlpha": 0.1,
-                    "minorGridEnabled": true
-                }
-            });
+                   chart =       AmCharts.makeChart("chartdiv2",
+        {
+          "type": "serial",
+          "categoryField": "date",
+          "dataDateFormat": "YYYY-MM-DD",
+          "theme": "default",
+          "categoryAxis": {
+            "parseDates": true
+          },
+          "chartCursor": {
+            "enabled": true
+          },
+          "chartScrollbar": {
+            "enabled": true
+          },
+          "trendLines": [],
+          "graphs": [
+            {
+              "bullet": "round",
+              "id": "AmGraph-1",
+              "title": "graph 1",
+              "valueField": "Poids"
+            },
+            {
+              "bullet": "square",
+              "id": "AmGraph-2",
+              "title": "graph 2",
+              "valueField": "column-2"
+            }
+          ],
+          "guides": [],
+          "valueAxes": [
+            {
+              "id": "ValueAxis-1",
+              "title": "Axis title"
+            }
+          ],
+          "allLabels": [],
+          "balloon": {
+            "animationDuration": 0.38
+          },
+          "titles": [
+            {
+              "id": "Title-1",
+              "size": 15,
+              "text": "Chart Title"
+            }
+          ],
+          "dataProvider": [
+            {
+              "date": "2014-03-01",
+              "Poids": 8
+            },
+            {
+              "date": "2014-03-02",
+              "Poids": 6
+            },
+            {
+              "date": "2014-03-03",
+              "Poids": 2
+            },
+            {
+              "date": "2014-03-04",
+              "Poids": 1
+            },
+            {
+              "date": "2014-03-05",
+              "Poids": 2
+            },
+            {
+              "date": "2014-03-06",
+              "Poids": 3
+            },
+            {
+              "date": "2014-03-07",
+              "Poids": 6
+            }
+          ]
+        }
+      );
                     
                         
                 };
