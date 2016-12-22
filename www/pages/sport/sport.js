@@ -2,19 +2,16 @@ angular.module('sport', [])
 .controller('SportCtrl', function($scope){
 
 	//affichage par page
-	$scope.selectedPractise;
+	$scope.selectedpractice = $scope.practices[0];
+	console.log($scope.selectedpractice);
 
-	//$scope.exercices = exercices;
-	$scope.chooseExcercice = chooseExcercice;
-	$scope.loadNextPage = loadNextPage;
-
-	$scope.choosePractise = function (practise){
-		console.log(practise);
+	$scope.choosepractice = function (practice){
+		console.log(practice);
 	}
 
 
 	// Quand on sélectionne des exercicez
-	function chooseExcercice (exercice) {
+	$scope.chooseExcercice = function chooseExcercice (exercice) {
 
 		$scope.excercices.forEach(function(item,index) {
 			if (exercice != item) {
@@ -29,7 +26,7 @@ angular.module('sport', [])
   		window.print();
   	}
   
-   function loadNextPage () {
+   $scope.loadNextPage = function loadNextPage () {
     $scope.currentPage++;
     $scope.pageSize = $scope.currentPage * DEFAULT_PAGE_SIZE_STEP;
   }

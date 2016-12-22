@@ -104,20 +104,12 @@ angular.module('services', [])
 	}
 })
 
-.factory('SportService', function($http) {
+.factory('sportService', function($http) {
 	return {
-		getBodyUser: function(id){
+		getPractices: function(){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8090/bodyUser/find/'+id
-			})
-		},
-
-		setBodyUser: function(bodyUser){
-			return $http({
-				method: 'POST',
-				url: 'http://localhost:8090/bodyUser/create/',
-				params: bodyUser
+				url: 'http://localhost:8090/practice'
 			})
 		}
 	}
