@@ -1,9 +1,25 @@
 angular.module('sport', [])
-.controller('SportCtrl', function($scope){
+.controller('SportCtrl', function($scope,$ionicLoading,sportService){
 
 	//affichage par page
-	$scope.selectedpractice = $scope.practices[0];
-	console.log($scope.selectedpractice);
+	//$scope.selectedpractice = $scope.practices[0];
+	$ionicLoading.show();
+	sportService.getPractices($scope.user.idGoal)
+
+	.then(function(response) {
+		console.log(response);
+		if (response.data) {
+		  $scope.practices = response.data;
+		  $scope.selectedpractice = $scope.practices[0];
+		  console.log($scope.practices);
+		  $ionicLoading.hide();
+		  console.log($scope.selectedpractice);
+		}else{
+		  $ionicLoading.hide();
+		}
+	}, function() {
+		$ionicLoading.hide();
+	})  
 
 	$scope.choosepractice = function (practice){
 		console.log(practice);
@@ -33,9 +49,14 @@ angular.module('sport', [])
 	
 
 
+})
+
+.filter('range', function() {
+  return function(input, total) {
+      for (var i=0; i<total; i++)
+        input.push(i);
+    return input;
+  };
 });
-
-
-
 
 

@@ -23,31 +23,54 @@
     </div>
     
     <div ng-repeat="exercise in selectedpractice.listExo" class="item item-thumbnail-left">
-      <img src="{{exercise.image}}">
-      <h2>{{exercise.name}}</h2>
+      <img src="{{exercise.pictureExercise}}">
+      <h2>{{exercise.nameExercise}}</h2>
       <div class="row responsive-sm">
         <div class="col">
-          <p>Durée : {{exercise.duration}} min </p>
-          <p>Nb de Set : {{exercise.set}} </p>
-          <p>Nb de Repetition : {{exercise.rep}} </p>
+          <p>Durée : {{exercise.ple.duration}} min </p>
+          <p>Nb de Set : {{exercise.ple.set}} </p>
+          <p>Nb de Repetition : {{exercise.ple.repetition}} </p>
         </div>
         <div class="col">
-          <p>Leg : TODO </p>
-          <p>Arm  : TODO </p>
-          <p>Cheast : TODO </p>
+          <p>Leg :
+            <span ng-if="exercise.legDifficultyExercice == 0"><img src="/ressources/sport/etoile_grise.png"></span>
+            <span ng-repeat="n in [] | range:exercise.legDifficultyExercice"><img src="/ressources/sport/etoile.png"></span>
+          </p>
+          <p>Arm :
+            <span ng-if="exercise.difficultyArmExercise == 0"><img src="/ressources/sport/etoile_grise.png"></span>
+            <span ng-repeat="n in [] | range:exercise.difficultyArmExercise"><img src="/ressources/sport/etoile.png"></span>
+          </p>
+          <p>Cheast :
+            <span ng-if="exercise.difficultyCheastExercise == 0"><img src="/ressources/sport/etoile_grise.png"></span>
+            <span ng-repeat="n in [] | range:exercise.difficultyCheastExercise"><img src="/ressources/sport/etoile.png"></span>
+          </p>
 
         </div>
         <div class="col">
-          <p>Abs : TODO </p>
-          <p>Back  : TODO </p>
-          <p>Shoulder : TODO </p>
+
+          <p>Abs :
+            <span ng-if="exercise.difficultyAbsExercise == 0"><img src="/ressources/sport/etoile_grise.png"></span>
+            <span ng-repeat="n in [] | range:exercise.difficultyAbsExercise"><img src="/ressources/sport/etoile.png"></span>
+          </p>
+          <p>Back :
+            <span ng-if="exercise.difficultyBackExercise == 0"><img src="/ressources/sport/etoile_grise.png"></span>
+            <span ng-repeat="n in [] | range:exercise.difficultyBackExercise"><img src="/ressources/sport/etoile.png"></span>
+          </p>
+          <p>Shoulder :
+            <span ng-if="exercise.difficultyShoulderExercise == 0"><img src="/ressources/sport/etoile_grise.png"></span>
+            <span ng-repeat="n in [] | range:exercise.difficultyShoulderExercise"><img src="/ressources/sport/etoile.png"></span>
+          </p>
         </div>
-         <div class="col">
-          <p>Butt : TODO </p>
+        <div class="col">
+
+          <p>Butt :
+            <span ng-if="exercise.difficultyButtExercise == 0"><img src="/ressources/sport/etoile_grise.png"></span>
+            <span ng-repeat="n in [] | range:exercise.difficultyButtExercise"><img src="/ressources/sport/etoile.png"></span>
+          </p>
         </div>
       </div>
       
-      Description : {{exercise.description}}
+      Description : {{exercise.descriptionExercise}}
     </div>
   </ion-item>
         </ion-content>

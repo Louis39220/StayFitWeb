@@ -56,12 +56,6 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     {'name' : 'Seche Musculaire', 'description' : 'description Seche musculaire', 'image' : 'ressources/seche.jpg'}
   ]*/
 
-  sportService.getPractices()
-  .then(function(response){
-    console.log(response);
-    $rootScope.practices = response.data;
-  });
-
   /*
   $rootScope.practices =  [
     {'name' : 'Séance Hypertrophie', 'objectif' : 'Prise de masse','exercises' : [
