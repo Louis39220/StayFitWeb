@@ -4,25 +4,25 @@
 
    <label class="item item-input item-select">
     <div class="input-label">
-      Séance :
+      Séance : 
     </div>
    
-    <select ng-model="selectedPractise" ng-options="practise as practise.name for practise in practises">
+    <select ng-model="selectedpractice" ng-options="practice as practice.practiceName for practice in practices">
       <option value="" disabled selected">Selectionner votre séance</option>  
     </select>
 
   </label>
-  <!-- <ion-item ng-repeat="practise in practises"> -->
+  <!-- <ion-item ng-repeat="practice in practices"> -->
     <div class="item item-thumbnail-left">
       <img src="{{goal.image}}">
-      <h1>{{selectedPractise.name}}</h1>
+      <h1>{{selectedpractice.practiceName}}</h1>
       <h2>objectif : {{goal.name}}</h2>
       <button class="button button-stable">
         imprimer
       </button>
     </div>
     
-    <div ng-repeat="exercise in selectedPractise.exercises" class="item item-thumbnail-left">
+    <div ng-repeat="exercise in selectedpractice.listExo" class="item item-thumbnail-left">
       <img src="{{exercise.image}}">
       <h2>{{exercise.name}}</h2>
       <div class="row responsive-sm">

@@ -1,5 +1,5 @@
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'information.controllers', 'services', 'amChartsDirectiveExample', 'ngMessages'])
-.run(function($ionicPlatform,$rootScope,goalService) {
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'information.controllers', 'services', 'ngMessages'])
+.run(function($ionicPlatform,$rootScope,goalService,sportService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,7 +25,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     sexe: "",
   	is_coach: true,
   	is_dietitian: true,
-    idgoal: null
+    idGoal: null
   };
 
   $rootScope.bodyUser = {
@@ -40,12 +40,14 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     image: ''
   }
 
+  $rootScope.bodyUsers = [];
+  $rootScope.weights = [];
+  $rootScope.gracemasses = [];
   goalService.getGoals()
   .then(function(response){
     console.log(response);
     $rootScope.goals = response.data;
-  })
-
+  });
 
  /*$rootScope.goals =  [
 
@@ -54,7 +56,14 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     {'name' : 'Seche Musculaire', 'description' : 'description Seche musculaire', 'image' : 'ressources/seche.jpg'}
   ]*/
 
-  $rootScope.practises =  [
+  sportService.getPractices()
+  .then(function(response){
+    console.log(response);
+    $rootScope.practices = response.data;
+  });
+
+  /*
+  $rootScope.practices =  [
     {'name' : 'Séance Hypertrophie', 'objectif' : 'Prise de masse','exercises' : [
       {'name' : 'Développé Couché', 'description' : 'Sur un banc de musculation efféctué des répétition de descente et remonté de poids', 'image' : 'ressources/sport/developpecouche.jpg' ,'set' : '4', 'rep':'10','duration':'20'},
       {'name' : 'Tirage Poulie', 'description' : 'à l aide d une poulie effectué des mouvement de descente/ monté', 'image' : 'ressources/sport/tiragepoulie.jpg', 'set' : '4', 'rep':'10','duration':'20'},
@@ -67,6 +76,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       {'name' : 'Course à pied', 'description' : 'Effectué une course', 'image' : 'ressources/sport/course.png', 'set' : '4', 'rep':'10','duration':'20'}
     ]}
   ]
+  */
 
 //  $rootScope.excerices =  [
 //    {'name' : 'Développé Couché', 'description' : 'Sur un banc de musculation efféctué des répétition de descente et remonté de poids', 'image' : 'ressources/sport/developpecouche.jpg' ,'set' : '4', 'rep':'10','duration':'20'},
@@ -122,7 +132,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       url: '/',
       views: {
         'menuContent': {
-          templateUrl: 'pages/objectif/objectif.html'
+          templateUrl: 'pages/objectif/objectif.html',
+          controller: 'ObjectifCtrl'
         }
       }
     })
