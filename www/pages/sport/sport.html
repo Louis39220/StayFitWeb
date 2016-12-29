@@ -14,7 +14,7 @@
   </label>
   <!-- <ion-item ng-repeat="practice in practices"> -->
     <div class="item item-thumbnail-left">
-      <img src="{{goal.image}}">
+      <img ng-src="{{goal.image}}">
       <h1>{{selectedpractice.practiceName}}</h1>
       <h2>objectif : {{goal.name}}</h2>
       <button class="button button-stable">
@@ -23,7 +23,7 @@
     </div>
     
     <div ng-repeat="exercise in selectedpractice.listExo" class="item item-thumbnail-left">
-      <img src="{{exercise.pictureExercise}}">
+      <img ng-src="{{exercise.pictureExercise}}">
       <h2>{{exercise.nameExercise}}</h2>
       <div class="row responsive-sm">
         <div class="col">
