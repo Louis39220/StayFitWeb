@@ -2,6 +2,10 @@ angular.module('profil.controllers', [])
 
 .controller('ProfilCtrl', function($scope,$ionicLoading,userService) {
 	//console.log('ProfilCtrl');
+	$scope.$on("$ionicView.beforeEnter", function(event, data){
+	   // handle event
+	   console.log($scope.goal);
+	});
 	$scope.modif = {firstName:'', lastName:'', birthday:'', sexe:'', showModification: false};
 
 // marche pas

@@ -19,10 +19,14 @@ angular.module('objectif.controllers', [])
 	$scope.changeObjectif = function(objectif) {
 		$ionicLoading.show();
 		$scope.user.idGoal = objectif.idGoal;
-		$scope.goal = objectif;
+		$scope.goal.idGoal = objectif.idGoal;
+		$scope.goal.description = objectif.description;
+		$scope.goal.name = objectif.name;
+		$scope.goal.image = objectif.image;
+		console.log($scope.goal);
 		userService.setGoal($scope.user).then(function(response){
 			$scope.goals.forEach(function(item,index) {
-				if (objectif != item) {
+				if ($scope.goal.idGoal != item.idGoal) {
 					$scope.goals[index].checked = false;
 				}else{
 					$scope.goals[index].checked = true;
