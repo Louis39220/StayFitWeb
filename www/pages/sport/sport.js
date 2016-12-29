@@ -4,7 +4,7 @@ angular.module('sport', [])
 	//affichage par page
 	//$scope.selectedpractice = $scope.practices[0];
 	$ionicLoading.show();
-	sportService.getPractices($scope.user.idGoal)
+	sportService.getPractices($scope.goal.idGoal)
 
 	.then(function(response) {
 		console.log(response);
