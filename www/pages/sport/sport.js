@@ -3,23 +3,25 @@ angular.module('sport', [])
 
 	//affichage par page
 	//$scope.selectedpractice = $scope.practices[0];
-	$ionicLoading.show();
-	sportService.getPractices($scope.goal.idGoal)
+	$scope.$on("$ionicView.beforeEnter", function(event, data){
+		$ionicLoading.show();
+		sportService.getPractices($scope.user.idGoal)
 
-	.then(function(response) {
-		console.log(response);
-		if (response.data) {
-		  $scope.practices = response.data;
-		  $scope.selectedpractice = $scope.practices[0];
-		  console.log($scope.practices);
-		  $ionicLoading.hide();
-		  console.log($scope.selectedpractice);
-		}else{
-		  $ionicLoading.hide();
-		}
-	}, function() {
-		$ionicLoading.hide();
-	})  
+		.then(function(response) {
+			console.log(response);
+			if (response.data) {
+			  $scope.practices = response.data;
+			  $scope.selectedpractice = $scope.practices[0];
+			  console.log($scope.practices);
+			  $ionicLoading.hide();
+			  console.log($scope.selectedpractice);
+			}else{
+			  $ionicLoading.hide();
+			}
+		}, function() {
+			$ionicLoading.hide();
+		}) 
+	}); 
 
 	$scope.choosepractice = function (practice){
 		console.log(practice);
