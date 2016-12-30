@@ -34,10 +34,11 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   };
 
   $rootScope.goal = {
-    idGoal: null,
+    idGoal: 0,
     description: '',
     name:'',
-    image: ''
+    image: '',
+    checked: false
   }
 
   $rootScope.bodyUsers = [];

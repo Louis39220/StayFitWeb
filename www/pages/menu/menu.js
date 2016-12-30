@@ -195,8 +195,12 @@ angular.module('menu.controllers', [])
         $scope.user.idGoal = response.data.idGoal;
         console.log($scope.user);
         if ($scope.user.idGoal){
-          $scope.goal = $scope.goals[$scope.user.idGoal - 1];
+          $scope.goal.idGoal = $scope.goals[$scope.user.idGoal - 1].idGoal;
+          $scope.goal.name = $scope.goals[$scope.user.idGoal - 1].name.toString();
+          $scope.goal.description = $scope.goals[$scope.user.idGoal - 1].description.toString();
+          $scope.goal.image = $scope.goals[$scope.user.idGoal - 1].image.toString();
         }
+        console.log($scope.goal);
         var birthdayDash = response.data.birthday.split(" ");
         var birthdayArray = birthdayDash[0].split("-");
         var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
