@@ -11,18 +11,24 @@ angular.module('objectif.controllers', [])
 					item.checked = false;
 				}
 			});
+			console.log($scope.goals);
 	}
 
 	$scope.init();
 
 	// Quand on sélectionne un nouvel objectif, on décoche les autres
 	$scope.changeObjectif = function(objectif) {
+		console.log(objectif);
+		console.log($scope.goals);
 		$ionicLoading.show();
-		$scope.user.idGoal = objectif.idGoal;
-		$scope.goal.idGoal = objectif.idGoal;
-		$scope.goal.description = objectif.description;
-		$scope.goal.name = objectif.name;
-		$scope.goal.image = objectif.image;
+		var id = 0;
+		var id =+ objectif.idGoal;
+		$scope.user.idGoal = id;
+
+		$scope.goal.idGoal = id;
+		$scope.goal.description = objectif.description.valueOf();
+		$scope.goal.name = objectif.name.valueOf();
+		$scope.goal.image = objectif.image.valueOf();
 		console.log($scope.goal);
 		userService.setGoal($scope.user).then(function(response){
 			$scope.goals.forEach(function(item,index) {
