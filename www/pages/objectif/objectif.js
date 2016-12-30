@@ -19,10 +19,10 @@ angular.module('objectif.controllers', [])
 	$scope.changeObjectif = function(objectif) {
 		$ionicLoading.show();
 		$scope.user.idGoal = objectif.idGoal;
-/*		$scope.goal.idGoal = objectif.idGoal;
+		$scope.goal.idGoal = objectif.idGoal;
 		$scope.goal.description = objectif.description;
 		$scope.goal.name = objectif.name;
-		$scope.goal.image = objectif.image;*/
+		$scope.goal.image = objectif.image;
 		$scope.goal = objectif;
 		console.log($scope.goal);
 		userService.setGoal($scope.user).then(function(response){
