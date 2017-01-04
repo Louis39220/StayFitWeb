@@ -1,23 +1,48 @@
 <ion-view>
-<ion-content>
-	<h1 class="center">Nutrition</h1>
+  <ion-content>
+    <h1 class="center">Nutrition</h1>
 
-  <div class="list card">
-
-  <div class="item item-thumbnail-left">
-	    <img src="/ressources/stayfit.jpg">
-	    <h1>page en cours de développement</h1>
-
-	   	<ion-item ng-if="user.isConnected">
-	          Hello {{user.firstName}} , cette page est planifié pour la release 2
-	   	</ion-item>
-  </div>
-
-  <div class="item item-image">
-    <img src="/ressources/workInProgress.jpg" style="max-width: 500px;">
-  </div>
-
+   <label class="item item-input item-select">
+    <div class="input-label">
+      Repas : 
+    </div>
    
-</div>
-  </ion-content>
-</ion-view>
+    <select ng-model="selectedmeal" ng-options="meal as meal.mealName for meal in meals">
+      <option value="" disabled selected">Selectionner votre repas</option>  
+    </select>
+
+  </label>
+    <div class="item item-thumbnail-left">
+      <img ng-src="{{goal.image}}">
+      <h1>{{selectedmeal.mealName}}</h1>
+      <h2>objectif : {{goal.name}}</h2>
+      <button class="button button-stable">
+        imprimer
+      </button>
+    </div>
+    
+    <div ng-repeat="dish in selectedmeal.listExo" class="item item-thumbnail-left">
+      <img ng-src="{{dish.pictureDish}}">
+      <h2>{{dish.nameDish}}</h2>
+      <div class="row responsive-sm">
+        <div class="col">
+          <p>Quantité :  g </p>
+          <p>Calorie :  g </p>
+        </div>
+        <div class="col">
+          <p>Glucide :
+          </p>
+          <p>Protéine :
+          </p>
+          <p>Lipide :
+          </p>
+        </div>
+      </div>
+      
+      Description : {{dish.descriptionDish}}
+      Recette : {{dish.recetteDish}}
+    </div>
+  </ion-item>
+        </ion-content>
+      </ion-view>
+
