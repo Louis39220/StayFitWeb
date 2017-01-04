@@ -7,7 +7,7 @@ angular.module('services', [])
 			console.log(data);
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/userConnect/login',
+				url: 'http://54.214.204.132:8080/userConnect/login',
 				params: data
 			})
 		},
@@ -17,7 +17,7 @@ angular.module('services', [])
 			console.log(data);
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/userConnect/create',
+				url: 'http://54.214.204.132:8080/userConnect/create',
 				params: data
 			})
 		},
@@ -27,7 +27,7 @@ angular.module('services', [])
 			console.log(data);
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/user/create',
+				url: 'http://54.214.204.132:8080/user/create',
 				params: data
 			})
 		},
@@ -35,7 +35,7 @@ angular.module('services', [])
 		getInfos: function(id){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8080/user/find/'+id
+				url: 'http://54.214.204.132:8080/user/find/'+id
 			})
 		},
 
@@ -45,7 +45,7 @@ angular.module('services', [])
 			console.log(user);
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/user/setgoal',
+				url: 'http://54.214.204.132:8080/user/setgoal',
 				params: data
 			})
 		}
@@ -57,14 +57,14 @@ angular.module('services', [])
 		getBodyUser: function(id){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8080/bodyUser/findLast/'+id
+				url: 'http://54.214.204.132:8080/bodyUser/findLast/'+id
 			})
 		},
 
 		setBodyUser: function(bodyUserAndId){
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/bodyUser/insert',
+				url: 'http://54.214.204.132:8080/bodyUser/insert',
 				params: bodyUserAndId
 			})
 		},
@@ -72,7 +72,7 @@ angular.module('services', [])
 		getAllBodyUser: function(id){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8080/bodyUser/find/' + id
+				url: 'http://54.214.204.132:8080/bodyUser/find/' + id
 			})
 		}
 	}
@@ -83,21 +83,21 @@ angular.module('services', [])
 		getGoals: function(){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8080/goal'
+				url: 'http://54.214.204.132:8080/goal'
 			})
 		},
 
 		getGoal: function(id){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8080/goal/find/'+id
+				url: 'http://54.214.204.132:8080/goal/find/'+id
 			})
 		},
 
 		setGoal: function(idGoal){
 			return $http({
 				method: 'POST',
-				url: 'http://localhost:8080/user/setgoal',
+				url: 'http://54.214.204.132:8080/user/setgoal',
 				params: idGoal
 			})
 		}
@@ -109,7 +109,7 @@ angular.module('services', [])
 		getPractices: function(id){
 			return $http({
 				method: 'GET',
-				url: 'http://localhost:8080/practice/findpractices/'+id
+				url: 'http://54.214.204.132:8080/practice/findpractices/'+id
 			})
 		}
 	}
