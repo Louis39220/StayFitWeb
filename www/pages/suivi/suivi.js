@@ -1,10 +1,6 @@
 angular.module('suivi.controllers', [])
 
 .controller('SuiviCtrl', function($scope,$document,$ionicSideMenuDelegate,$state,bodyUserService) {
-  $scope.updateWeight = function(update){
-    $scope.update = update;
-    console.log(update);
-  }
 	$ionicSideMenuDelegate.canDragContent(false);
 	$scope.init = function (){
 	};
@@ -23,8 +19,12 @@ angular.module('suivi.controllers', [])
 
 })
 
-.controller('weightController', function($scope) {
+.controller('Weight', function($scope) {
   console.log('ok');
+  console.log($scope.weights);
+  $scope.$on("$ionicView.beforeEnter", function(event, data){
+    console.log("on");
+  });
 })
 
 .directive('myElem',
@@ -32,6 +32,7 @@ angular.module('suivi.controllers', [])
        return {
            restrict: 'E',
            replace:true,
+           controller: 'Weight',
            template: '<div id="chartdiv" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
            link: function (scope, element, attrs) {
                 var chart = false;
