@@ -21,26 +21,25 @@
       </button>
     </div>
     
-    <div ng-repeat="dish in selectedmeal.listExo" class="item item-thumbnail-left">
+    <div ng-repeat="dish in selectedmeal.listDish" class="item item-thumbnail-left">
       <img ng-src="{{dish.pictureDish}}">
-      <h2>{{dish.nameDish}}</h2>
+      <h2>{{dish.name}}</h2>
+      Description : {{dish.description}}
       <div class="row responsive-sm">
         <div class="col">
-          <p>Quantité :  g </p>
-          <p>Calorie :  g </p>
+          <p>Quantité : {{dish.mld.quantity}} g </p>
+          <p>Calorie : {{dish.caloriePercent}} g </p>
         </div>
         <div class="col">
-          <p>Glucide :
+          <p>Glucide : {{dish.glucidePercent}}
           </p>
-          <p>Protéine :
+          <p>Protéine : {{dish.proteinePercent}}
           </p>
-          <p>Lipide :
+          <p>Lipide : {{dish.lipidePercent}} 
           </p>
         </div>
       </div>
-      
-      Description : {{dish.descriptionDish}}
-      Recette : {{dish.recetteDish}}
+      Recette : {{dish.dishRecette}}
     </div>
   </ion-item>
         </ion-content>
