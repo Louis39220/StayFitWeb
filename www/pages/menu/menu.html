@@ -6,9 +6,9 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
         <div class="buttonsHeader bar">
 
-          <button class="button button-clear button-light buttonHeader" ng-click="goToSuivi()">Suivi</button>
-          <button class="button button-clear button-light buttonHeader" ng-click="goToSport()">Sport</button>
-          <button class="button button-clear  button-light buttonHeader" ng-click="goToNutrition()">Nutrition</button>
+          <button ng-if="user.isConnected" class="button button-clear button-light buttonHeader" ng-click="goToSuivi()">Suivi</button>
+          <button ng-if="user.isConnected" class="button button-clear button-light buttonHeader" ng-click="goToSport()">Sport</button>
+          <button ng-if="user.isConnected" class="button button-clear  button-light buttonHeader" ng-click="goToNutrition()">Nutrition</button>
           <button style="display: none"></button>
 
         </div>
@@ -41,15 +41,15 @@
         <ion-item ng-if="user.isConnected" menu-close ng-click="goToObjectif()">
           Mon objectif
         </ion-item>
-        <ion-item ng-if="user.is_coach" menu-close ng-click="goToCoach()">
+        <ion-item ng-if="user.is_coach && user.isConnected" menu-close ng-click="goToCoach()">
           Créer objectif
         </ion-item>
-        <ion-item ng-if="user.is_dietitian" menu-close ng-click="goToDietitian()">
+        <ion-item ng-if="user.is_dietitian && user.isConnected" menu-close ng-click="goToDietitian()">
           Créer régime
         </ion-item>
       </ion-list>
     </div>
-    <div class="bottomItem">
+    <div class="bottomItem button-icon">
       <div class="row">
         <div class="col">
           <ion-item menu-close  ng-click="goToContact()" >
@@ -58,10 +58,18 @@
         </div>
         <div class="col">
           <ion-item menu-close  ng-click="goToAbout()">
-            A propos
+            About
           </ion-item>
         </div>
+        </div>
+        <div class="row">
+          <ion-item menu-close ng-if="user.isConnected" ng-click="deconnexion()">
+            Deconnexion
+          </ion-item>
+        </div>
+        
       </div>
+      
     </ion-content>
 
   </div>

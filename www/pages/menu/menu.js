@@ -10,6 +10,12 @@ angular.module('menu.controllers', [])
     $scope.modal.remove();
   };
 
+  $scope.deconnexion =function(){
+    $scope.goToWelcome();
+    $scope.user.isConnected = false;
+  };
+  
+
   $scope.goToSuivi = function() {
 
     $state.go('app.suivi');
