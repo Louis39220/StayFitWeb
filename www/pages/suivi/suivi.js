@@ -5,7 +5,6 @@ angular.module('suivi.controllers', [])
     $scope.update = update;
     console.log(update);
   }
-	console.log('SuiviCtrl');
 	$ionicSideMenuDelegate.canDragContent(false);
 	$scope.init = function (){
 	};
@@ -24,13 +23,17 @@ angular.module('suivi.controllers', [])
 
 })
 
+.controller('weightController', function($scope) {
+  console.log('ok');
+})
+
 .directive('myElem',
    function () {
        return {
            restrict: 'E',
            replace:true,
            template: '<div id="chartdiv" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
-           link: function (scope, element, attrs, ) {
+           link: function (scope, element, attrs) {
                 var chart = false;
                
                 var initChart = function() {
