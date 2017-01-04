@@ -9,7 +9,7 @@
       </div>
 
   
-       <div class="item item-body">
+       
         <div class="item item-avatar">
         <img class="customIcon" src="ressources/mail.png">
           <h2>Mail :</h2>
@@ -30,17 +30,17 @@
           <h2>Objectif :</h2>
           <h3>{{goal.name}}</h3>
         </div>
-        <div class="item item-avatar" ng-show={{user.is_coach}}>
+        <div class="item item-avatar" ng-show=user.is_coach>
         <img class="customIcon" src="ressources/coach.png">
           <h2>Profil spécial :<h2>
           <h3> Coach sportif<h3>
         </div>
-        <div class="item item-avatar" ng-show={{user.is_dietitian}}>
+        <div class="item item-avatar" ng-show=user.is_dietitian>
         <img class="customIcon" src="ressources/diet.png">
           <h2>Profil spécial :<h2>
           <h3>Coach Dietetique</h3>
         </div>
-      </div>
+      
 
       <label class="item">
             <button class="button button-block button-balanced" ng-click="showProfilModification()">Modification</button>
