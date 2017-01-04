@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'information.controllers', 'services', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'information.controllers', 'coach.controllers', 'dietitian.controllers', 'services', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope,goalService,sportService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -176,6 +176,25 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       views: {
         'menuContent': {
           templateUrl: 'pages/about.html'
+        }
+      }
+    })
+
+  .state('app.coach', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'pages/coach/coach.html',
+          controller: 'CoachCtrl'
+        }
+      }
+    })
+
+  .state('app.dietitian', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'pages/dietitian/dietitian.html'
         }
       }
     })

@@ -1,12 +1,25 @@
 angular.module('suivi.controllers', [])
 
-.controller('SuiviCtrl', function($scope,$document,$ionicSideMenuDelegate,bodyUserService) {
+.controller('SuiviCtrl', function($scope,$document,$ionicSideMenuDelegate,$state,bodyUserService) {
+  $scope.updateWeight = function(update){
+    $scope.update = update;
+    console.log(update);
+  }
 	console.log('SuiviCtrl');
 	$ionicSideMenuDelegate.canDragContent(false);
 	$scope.init = function (){
 	};
 
+
 	$scope.init();
+
+  $scope.$on("$ionicView.beforeEnter", function(event, data){
+    $state.reload();
+    if ($scope.update){
+      console.log("on");
+      $scope.update();
+    }
+  });
 
 
 })
@@ -16,7 +29,6 @@ angular.module('suivi.controllers', [])
        return {
            restrict: 'E',
            replace:true,
-          
            template: '<div id="chartdiv" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
            link: function (scope, element, attrs) {
                 var chart = false;
@@ -25,53 +37,57 @@ angular.module('suivi.controllers', [])
                   if (chart) chart.destroy();
                   var config = scope.config || {};
                    chart = AmCharts.makeChart("chartdiv",
-        {
-          "type": "serial",
-          "categoryField": "date",
-          "dataDateFormat": "YYYY-MM-DD",
-          "theme": "default",
-          "categoryAxis": {
-            "parseDates": true
-          },
-          "chartCursor": {
-            "enabled": true
-          },
-          "chartScrollbar": {
-            "enabled": true
-          },
-          "trendLines": [],
-          "graphs": [
-            {
-              "bullet": "round",
-              "id": "AmGraph-1",
-              "title": "graph 1",
-              "valueField": "weight"
-            },
-            {
-              "bullet": "square",
-              "id": "AmGraph-2",
-              "title": "graph 2",
-              "valueField": "column-2"
-            }
-          ],
-          "guides": [],
-          "valueAxes": [
-            {
-              "id": "ValueAxis-1",
-              "title": "Poids"
-            }
-          ],
-          "allLabels": [],
-          "balloon": {
-            "animationDuration": 0.38
-          },
-          "dataProvider": scope.weights
-        }
-      );
+                    {
+                      "type": "serial",
+                      "categoryField": "date",
+                      "dataDateFormat": "YYYY-MM-DD",
+                      "theme": "default",
+                      "categoryAxis": {
+                        "parseDates": true
+                      },
+                      "chartCursor": {
+                        "enabled": true
+                      },
+                      "chartScrollbar": {
+                        "enabled": true
+                      },
+                      "trendLines": [],
+                      "graphs": [
+                        {
+                          "bullet": "round",
+                          "id": "AmGraph-1",
+                          "title": "graph 1",
+                          "valueField": "weight"
+                        },
+                        {
+                          "bullet": "square",
+                          "id": "AmGraph-2",
+                          "title": "graph 2",
+                          "valueField": "column-2"
+                        }
+                      ],
+                      "guides": [],
+                      "valueAxes": [
+                        {
+                          "id": "ValueAxis-1",
+                          "title": "Poids"
+                        }
+                      ],
+                      "allLabels": [],
+                      "balloon": {
+                        "animationDuration": 0.38
+                      },
+                      "dataProvider": scope.weights
+                    }
+                  );
                     
                         
                 };
                 initChart();
+                scope.setData = function() {
+                  chart.validateData();
+                }
+                scope.updateWeight({update: scope.setData});
                    
          }//end watch           
        }

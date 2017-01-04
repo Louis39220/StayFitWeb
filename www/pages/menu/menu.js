@@ -57,6 +57,16 @@ angular.module('menu.controllers', [])
     $state.go('app.about');
   };
 
+  $scope.goToCoach = function() {
+
+    $state.go('app.coach');
+  };
+
+  $scope.goToDietitian = function() {
+
+    $state.go('app.dietitian');
+  };
+
   $scope.login = function() {
     if ($scope.modal != null) {
       $scope.modal.remove();

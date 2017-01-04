@@ -41,6 +41,12 @@
         <ion-item ng-if="user.isConnected" menu-close ng-click="goToObjectif()">
           Mon objectif
         </ion-item>
+        <ion-item ng-if="user.is_coach" menu-close ng-click="goToCoach()">
+          Créer objectif
+        </ion-item>
+        <ion-item ng-if="user.is_dietitian" menu-close ng-click="goToDietitian()">
+          Créer régime
+        </ion-item>
       </ion-list>
     </div>
     <div class="bottomItem">

@@ -2,6 +2,8 @@ angular.module('information.controllers', [])
 
 .controller('InformationCtrl', function($scope,$ionicLoading,bodyUserService) {
 	$scope.modif = {weight:'', gracemass:''};
+	var date = new Date();
+	console.log(date.getFullYear());
 
 	$scope.getInfos = function () {
 		bodyUserService.getBodyUser($scope.user.id).then(function(response){
@@ -28,6 +30,7 @@ angular.module('information.controllers', [])
         if (response.data) {
           $scope.bodyUser.weight = modif.weight;
           $scope.bodyUser.gracemass = modif.gracemass;
+          $scope.weights.push({date: '',weight: 0});
           $scope.modif = {poids:'', size:'', gracemass:''};
           $ionicLoading.hide();
         }else{
