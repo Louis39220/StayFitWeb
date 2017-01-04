@@ -1,11 +1,13 @@
 angular.module('suivi.controllers', [])
 
-.controller('SuiviCtrl', function($scope,$document,$ionicSideMenuDelegate,$state,bodyUserService) {
+.controller('SuiviCtrl', function($scope,$ionicSideMenuDelegate,$state,bodyUserService) {
 	$ionicSideMenuDelegate.canDragContent(false);
 	$scope.init = function (){
 	};
 
-
+  $state.transitionTo($state.current, { 
+    reload: true, inherit: false, notify: true
+  });
 	$scope.init();
 
   $scope.$on("$ionicView.beforeEnter", function(event, data){
@@ -19,11 +21,65 @@ angular.module('suivi.controllers', [])
 
 })
 
-.controller('Weight', function($scope) {
-  console.log('ok');
+.controller('Weight', function($scope, $interval, $rootScope) {
   console.log($scope.weights);
-  $scope.$on("$ionicView.beforeEnter", function(event, data){
-    console.log("on");
+
+  var chart = false;
+ 
+  var initChart = function() {
+    if (chart) chart.destroy();
+    var config = $scope.config || {};
+     chart = AmCharts.makeChart("chartdiv",
+      {
+        "type": "serial",
+        "categoryField": "date",
+        "dataDateFormat": "YYYY-MM-DD",
+        "theme": "default",
+        "categoryAxis": {
+          "parseDates": true
+        },
+        "chartCursor": {
+          "enabled": true
+        },
+        "chartScrollbar": {
+          "enabled": true
+        },
+        "trendLines": [],
+        "graphs": [
+          {
+            "bullet": "round",
+            "id": "AmGraph-1",
+            "title": "graph 1",
+            "valueField": "weight"
+          },
+          {
+            "bullet": "square",
+            "id": "AmGraph-2",
+            "title": "graph 2",
+            "valueField": "column-2"
+          }
+        ],
+        "guides": [],
+        "valueAxes": [
+          {
+            "id": "ValueAxis-1",
+            "title": "Poids"
+          }
+        ],
+        "allLabels": [],
+        "balloon": {
+          "animationDuration": 0.38
+        },
+        "dataProvider": $scope.weights
+      }
+    );
+      
+          
+  };
+  initChart();
+  $scope.$watch('updateSuivi', function(newVal, oldVal){
+    chart.validateData();
+    $rootScope.updateSuivi = false;
   });
 })
 
@@ -33,63 +89,7 @@ angular.module('suivi.controllers', [])
            restrict: 'E',
            replace:true,
            controller: 'Weight',
-           template: '<div id="chartdiv" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
-           link: function (scope, element, attrs) {
-                var chart = false;
-               
-                var initChart = function() {
-                  if (chart) chart.destroy();
-                  var config = scope.config || {};
-                   chart = AmCharts.makeChart("chartdiv",
-                    {
-                      "type": "serial",
-                      "categoryField": "date",
-                      "dataDateFormat": "YYYY-MM-DD",
-                      "theme": "default",
-                      "categoryAxis": {
-                        "parseDates": true
-                      },
-                      "chartCursor": {
-                        "enabled": true
-                      },
-                      "chartScrollbar": {
-                        "enabled": true
-                      },
-                      "trendLines": [],
-                      "graphs": [
-                        {
-                          "bullet": "round",
-                          "id": "AmGraph-1",
-                          "title": "graph 1",
-                          "valueField": "weight"
-                        },
-                        {
-                          "bullet": "square",
-                          "id": "AmGraph-2",
-                          "title": "graph 2",
-                          "valueField": "column-2"
-                        }
-                      ],
-                      "guides": [],
-                      "valueAxes": [
-                        {
-                          "id": "ValueAxis-1",
-                          "title": "Poids"
-                        }
-                      ],
-                      "allLabels": [],
-                      "balloon": {
-                        "animationDuration": 0.38
-                      },
-                      "dataProvider": scope.weights
-                    }
-                  );
-                    
-                        
-                };
-                initChart();
-                   
-         }//end watch           
+           template: '<div id="chartdiv" style="min-width: 310px; height: 400px; margin: 0 auto"></div>'
        }
    })
 

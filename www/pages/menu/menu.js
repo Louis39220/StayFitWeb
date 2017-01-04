@@ -18,7 +18,7 @@ angular.module('menu.controllers', [])
 
   $scope.goToSuivi = function() {
 
-    $state.go('app.suivi', {}, {reload: true});
+    $state.go('app.suivi');
   };
 
   $scope.goToSport = function() {
