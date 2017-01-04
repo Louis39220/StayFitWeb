@@ -50,6 +50,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     $rootScope.goals = response.data;
   });
 
+  $rootScope.updateSuivi = false;
+
  /*$rootScope.goals =  [
 
     {'name' : 'Prise de masse', 'description' : 'description prise de masse', 'image' : 'ressources/prisedemasse.jpg'},
