@@ -14,7 +14,7 @@ angular.module('suivi.controllers', [])
 	$scope.init();
 
   $scope.$on("$ionicView.beforeEnter", function(event, data){
-    $state.reload();
+    //$state.reload();
     if ($scope.update){
       console.log("on");
       $scope.update();
@@ -30,7 +30,7 @@ angular.module('suivi.controllers', [])
            restrict: 'E',
            replace:true,
            template: '<div id="chartdiv" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
-           link: function (scope, element, attrs) {
+           link: function (scope, element, attrs, ) {
                 var chart = false;
                
                 var initChart = function() {
@@ -84,10 +84,6 @@ angular.module('suivi.controllers', [])
                         
                 };
                 initChart();
-                scope.setData = function() {
-                  chart.validateData();
-                }
-                scope.updateWeight({update: scope.setData});
                    
          }//end watch           
        }
