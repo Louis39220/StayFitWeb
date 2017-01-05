@@ -4,7 +4,6 @@ angular.module('services', [])
 	return {
 		authenticate: function(user){
 			var data = {email: user.mail, psw: user.password};
-			console.log(data);
 			return $http({
 				method: 'POST',
 				url: 'http://54.214.204.132:8080/userConnect/login',
@@ -14,7 +13,6 @@ angular.module('services', [])
 
 		subscribe: function(user){
 			var data = {email: user.mail, psw: user.password};
-			console.log(data);
 			return $http({
 				method: 'POST',
 				url: 'http://54.214.204.132:8080/userConnect/create',
@@ -24,7 +22,6 @@ angular.module('services', [])
 
 		setInfos: function(infos){
 			var data = {id: infos.id, firstname: infos.firstName, lastname: infos.lastName, birthday: infos.birthday, sexe: infos.sexe, size: infos.size | 0,weight: infos.weight | 0};
-			console.log(data);
 			return $http({
 				method: 'POST',
 				url: 'http://54.214.204.132:8080/user/create',
@@ -41,8 +38,6 @@ angular.module('services', [])
 
 		setGoal: function(user){
 			var data = {id: user.id, idGoal: user.idGoal};
-			console.log(data);
-			console.log(user);
 			return $http({
 				method: 'POST',
 				url: 'http://54.214.204.132:8080/user/setgoal',
@@ -99,6 +94,17 @@ angular.module('services', [])
 				method: 'POST',
 				url: 'http://54.214.204.132:8080/user/setgoal',
 				params: idGoal
+			})
+		}
+	}
+})
+
+.factory('nutritionService', function($http) {
+	return {
+		getMeals: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://54.214.204.132:8080/meal/findmeals/'+id
 			})
 		}
 	}

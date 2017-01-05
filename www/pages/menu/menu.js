@@ -18,7 +18,7 @@ angular.module('menu.controllers', [])
 
   $scope.goToSuivi = function() {
 
-    $state.go('app.suivi', {}, {reload: true});
+    $state.go('app.suivi');
   };
 
   $scope.goToSport = function() {
@@ -200,7 +200,6 @@ angular.module('menu.controllers', [])
     userService.getInfos($scope.user.id)
 
     .then(function(response) {
-      console.log(response);
       if (response.data != null) {
         $scope.user.firstName = response.data.firstName;
         $scope.user.lastName = response.data.lastname;
@@ -209,14 +208,12 @@ angular.module('menu.controllers', [])
         $scope.user.is_dietitian = response.data.is_dietitian;
         $scope.user.size = response.data.size;
         $scope.user.idGoal = response.data.idGoal;
-        console.log($scope.user);
         if ($scope.user.idGoal){
           $scope.goal.idGoal = $scope.goals[$scope.user.idGoal - 1].idGoal;
           $scope.goal.name = $scope.goals[$scope.user.idGoal - 1].name.toString();
           $scope.goal.description = $scope.goals[$scope.user.idGoal - 1].description.toString();
           $scope.goal.image = $scope.goals[$scope.user.idGoal - 1].image.toString();
         }
-        console.log($scope.goal);
         var birthdayDash = response.data.birthday.split(" ");
         var birthdayArray = birthdayDash[0].split("-");
         var birthday = birthdayArray[2]+"/"+birthdayArray[1]+"/"+birthdayArray[0];
@@ -228,10 +225,11 @@ angular.module('menu.controllers', [])
           $scope.bodyUsers.forEach(function(item){
             item.recordDate = item.recordDate.split(" ")[0];
             $scope.weights.push({date: item.recordDate, weight: item.weight.toString()});
-            if (item.graceMasse != 0) {
+            if (item.graceMasse > 0) {
               $scope.gracemasses.push({date: item.recordDate, gracemass: item.graceMasse.toString()});
             }
           });
+          console.log($scope.weights);
         });
       }else{
         // TODO afficher erreur
