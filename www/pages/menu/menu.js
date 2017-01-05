@@ -1,6 +1,6 @@
 angular.module('menu.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService) {
+.controller('AppCtrl', function($scope, $window, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService) {
 
   $scope.erreurAuth = false;
   $scope.erreurSubscribe = false;
@@ -11,8 +11,10 @@ angular.module('menu.controllers', [])
   };
 
   $scope.deconnexion =function(){
+    $state.go($state.current, {}, {reload: true});
+    $window.location.reload(true);
     $scope.goToWelcome();
-    $scope.user.isConnected = false;
+    //$scope.user.isConnected = false;
   };
   
 
@@ -63,15 +65,23 @@ angular.module('menu.controllers', [])
     $state.go('app.about');
   };
 
-  $scope.goToCoach = function() {
+  $scope.goToCreationexercise = function() {
 
-    $state.go('app.coach');
+    $state.go('app.creationexercise');
+  };
+  $scope.goToCreationpractise = function() {
+
+    $state.go('app.creationpractise');
+  };
+  $scope.goToCreationdish = function() {
+
+    $state.go('app.creationdish');
+  };
+  $scope.goToCreationmeal = function() {
+
+    $state.go('app.creationmeal');
   };
 
-  $scope.goToDietitian = function() {
-
-    $state.go('app.dietitian');
-  };
 
   $scope.login = function() {
     if ($scope.modal != null) {

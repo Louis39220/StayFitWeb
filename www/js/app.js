@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'nutrition', 'information.controllers', 'coach.controllers', 'dietitian.controllers', 'services', 'ngMessages'])
+angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', 'profil.controllers', 'suivi.controllers', 'sport', 'nutrition', 'information.controllers', 'creationpractise.controllers', 'creationexercise.controllers','creationmeal.controllers','creationdish.controllers', 'services', 'ngMessages'])
 .run(function($ionicPlatform,$rootScope,goalService,sportService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -184,24 +184,46 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
       }
     })
 
-  .state('app.coach', {
+  .state('app.creationpractise', {
       url: '/',
       views: {
         'menuContent': {
-          templateUrl: 'pages/coach/coach.html',
-          controller: 'CoachCtrl'
+          templateUrl: 'pages/creationpractise/creationpractise.html',
+          controller: 'CreationpractiseCtrl'
         }
       }
     })
 
-  .state('app.dietitian', {
+  .state('app.creationexercise', {
       url: '/',
       views: {
         'menuContent': {
-          templateUrl: 'pages/dietitian/dietitian.html'
+          templateUrl: 'pages/creationexercise/creationexercise.html',
+          controller: 'CreationexerciseCtrl'
         }
       }
     })
+
+  .state('app.creationmeal', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'pages/creationmeal/creationmeal.html',
+          controller: 'CreationmealCtrl'
+        }
+      }
+    })
+
+  .state('app.creationdish', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'pages/creationdish/creationdish.html',
+          controller: 'CreationdishCtrl'
+        }
+      }
+    })
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/welcome');
 });

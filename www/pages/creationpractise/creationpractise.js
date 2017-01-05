@@ -1,6 +1,6 @@
-angular.module('coach.controllers', [])
+angular.module('creationpractise.controllers', [])
 
-.controller('CoachCtrl', function($scope) {
+.controller('CreationpractiseCtrl', function($scope) {
 
 
 

@@ -40,10 +40,6 @@ angular.module('nutrition', [])
 		});
 	}
  
-  	function print (){
-  		window.print();
-  	}
-  
    
 
 })
