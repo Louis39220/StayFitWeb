@@ -50,7 +50,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     $rootScope.goals = response.data;
   });
 
-  $rootScope.updateSuivi = false;
+  $rootScope.updateWeight = false;
+  $rootScope.updateGraceMass = false;
 
  /*$rootScope.goals =  [
 

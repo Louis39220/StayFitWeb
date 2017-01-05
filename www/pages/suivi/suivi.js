@@ -77,9 +77,9 @@ angular.module('suivi.controllers', [])
           
   };
   initChart();
-  $scope.$watch('updateSuivi', function(newVal, oldVal){
+  $scope.$watch('updateWeight', function(newVal, oldVal){
     chart.validateData();
-    $rootScope.updateSuivi = false;
+    $rootScope.updateWeight = false;
   });
 })
 
@@ -93,21 +93,14 @@ angular.module('suivi.controllers', [])
        }
    })
 
+.controller('GraceMass', function($scope, $interval, $rootScope) {
 
-.directive('myElemMg',
-   function () {
-       return {
-           restrict: 'E',
-           replace:true,
-          
-           template: '<div id="chartdiv2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
-           link: function (scope, element, attrs) {
-                var chart = false;
-               
-                var initChart = function() {
-                  if (chart) chart.destroy();
-                  var config = scope.config || {};
-                   chart = AmCharts.makeChart("chartdiv2",
+  var chart = false;
+ 
+  var initChart = function() {
+    if (chart) chart.destroy();
+    var config = $scope.config || {};
+     chart = AmCharts.makeChart("chartdiv2",
         {
           "type": "serial",
           "categoryField": "date",
@@ -148,14 +141,27 @@ angular.module('suivi.controllers', [])
           "balloon": {
             "animationDuration": 0.38
           },
-          "dataProvider": scope.gracemasses
+          "dataProvider": $scope.gracemasses
         }
       );
-                    
-                        
-                };
-                initChart();
+      
+          
+  };
+  initChart();
+  $scope.$watch('updateGraceMass', function(newVal, oldVal){
+    chart.validateData();
+    $rootScope.updateGraceMass = false;
+  });
+})
+
+
+.directive('myElemMg',
+    function () {
+      return {
+           restrict: 'E',
+           replace:true,
+           template: '<div id="chartdiv2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>',
+           controller: 'GraceMass'
                    
-         }//end watch           
-       }
+      }
    })
