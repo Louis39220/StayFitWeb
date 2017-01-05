@@ -99,6 +99,17 @@ angular.module('services', [])
 	}
 })
 
+.factory('nutritionService', function($http) {
+	return {
+		getMeals: function(id){
+			return $http({
+				method: 'GET',
+				url: 'http://54.214.204.132:8080/meal/findmeals/'+id
+			})
+		}
+	}
+})
+
 .factory('sportService', function($http) {
 	return {
 		getPractices: function(id){
