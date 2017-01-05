@@ -22,20 +22,20 @@
     </div>
     
     <div ng-repeat="dish in selectedmeal.listDish" class="item item-thumbnail-left">
-      <img ng-src="{{dish.pictureDish}}">
+      <img ng-src="{{dish.dishPicture}}">
       <h2>{{dish.name}}</h2>
       Description : {{dish.description}}
       <div class="row responsive-sm">
         <div class="col">
           <p>Quantité : {{dish.mld.quantity}} g </p>
-          <p>Calorie : {{dish.caloriePercent}} g </p>
+          <p>Calories : {{dish.calorie}} kcal </p>
         </div>
         <div class="col">
-          <p>Glucide : {{dish.glucidePercent}}
+          <p>Glucides : {{dish.glucide}} g
           </p>
-          <p>Protéine : {{dish.proteinePercent}}
+          <p>Protéines : {{dish.proteine}} g
           </p>
-          <p>Lipide : {{dish.lipidePercent}} 
+          <p>Lipides : {{dish.lipide}}  g
           </p>
         </div>
       </div>
