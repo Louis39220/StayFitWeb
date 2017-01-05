@@ -29,7 +29,11 @@ angular.module('information.controllers', [])
           $scope.bodyUser.gracemass = modif.gracemass;
           var date = new Date().toISOString().substring(0,10);
           $scope.weights.push({date: date,weight: modif.weight});
-          $rootScope.updateSuivi = true;
+          $rootScope.updateWeight = true;
+          if (modif.gracemass > 0) {
+	          $scope.gracemasses.push({date: date,gracemass: modif.gracemass});
+	          $rootScope.updateGraceMass = true;
+	      }
           $scope.modif = {poids:'', size:'', gracemass:''};
           $ionicLoading.hide();
         }else{

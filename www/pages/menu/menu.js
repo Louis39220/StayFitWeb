@@ -225,7 +225,7 @@ angular.module('menu.controllers', [])
           $scope.bodyUsers.forEach(function(item){
             item.recordDate = item.recordDate.split(" ")[0];
             $scope.weights.push({date: item.recordDate, weight: item.weight.toString()});
-            if (item.graceMasse != 0) {
+            if (item.graceMasse > 0) {
               $scope.gracemasses.push({date: item.recordDate, gracemass: item.graceMasse.toString()});
             }
           });
