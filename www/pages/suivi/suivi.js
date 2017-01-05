@@ -62,8 +62,7 @@ angular.module('suivi.controllers', [])
         "guides": [],
         "valueAxes": [
           {
-            "id": "ValueAxis-1",
-            "title": "Poids"
+            "id": "ValueAxis-1"
           }
         ],
         "allLabels": [],
@@ -133,8 +132,7 @@ angular.module('suivi.controllers', [])
           "guides": [],
           "valueAxes": [
             {
-              "id": "ValueAxis-1",
-              "title": "Masse graisseuse"
+              "id": "ValueAxis-1"
             }
           ],
           "allLabels": [],
