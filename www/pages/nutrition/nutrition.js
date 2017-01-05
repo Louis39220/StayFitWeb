@@ -1,5 +1,5 @@
 angular.module('nutrition', [])
-.controller('NutritionCtrl', function($scope,$ionicLoading,nutritionService){
+.controller('NutritionCtrl', function($scope,$ionicLoading,nutritionService,$cordovaPrinter){
 
 	//affichage par page
 	//$scope.selectedpractice = $scope.practices[0];
@@ -40,9 +40,13 @@ angular.module('nutrition', [])
 		});
 	}
  
-  	function print (){
-  		window.print();
-  	}
+  	$scope.print = function() {
+        if($cordovaPrinter.isAvailable()) {
+            $cordovaPrinter.print("http://www.nraboy.com");
+        } else {
+            alert("Printing is not available on device");
+        }
+    }
   
    
 

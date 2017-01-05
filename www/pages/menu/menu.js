@@ -1,6 +1,6 @@
 angular.module('menu.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService) {
+.controller('AppCtrl', function($scope, $window, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService) {
 
   $scope.erreurAuth = false;
   $scope.erreurSubscribe = false;
@@ -11,8 +11,10 @@ angular.module('menu.controllers', [])
   };
 
   $scope.deconnexion =function(){
+    $state.go($state.current, {}, {reload: true});
+    $window.location.reload(true);
     $scope.goToWelcome();
-    $scope.user.isConnected = false;
+    //$scope.user.isConnected = false;
   };
   
 
