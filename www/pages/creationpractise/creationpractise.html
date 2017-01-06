@@ -10,20 +10,15 @@
           <span class="input-label">Nom séance :</span>
           <input type="text" ng_model="modif.seance" placeholder="Nom séance">
           </label>
-          <label class="item item-input item-stacked-label">
-          <span class="input-label">Description séance :</span>
-          <input type="text" ng_model="modif.seance" placeholder="Description séance">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Objectif : 
+            </div>
+            <select ng-model="selectedpractice" ng-options="goal as goal.name for goal in goals">
+              <option value="" disabled selected">Selectionner votre objectif</option>  
+            </select>
           </label>
-           <label class="item item-input item-select">
-    <div class="input-label">
-      Objectif : 
-    </div>
-   
-    <select ng-model="selectedpractice" ng-options="goal as goal.name for goal in goals">
-      <option value="" disabled selected">Selectionner votre objectif</option>  
-    </select>
-  </label>
-          </form>
+        </form>
 
         </div>
         </div>
