@@ -117,6 +117,12 @@ angular.module('services', [])
 				method: 'GET',
 				url: 'http://54.214.204.132:8080/practice/findpractices/'+id
 			})
+		},
+		setPractices: function(id){
+			return $http({
+				method: 'POST',
+				url: 'http://54.214.204.132:8080/practice/create/'+id
+			})
 		}
 	}
 })
