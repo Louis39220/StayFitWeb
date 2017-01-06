@@ -3,24 +3,25 @@
     <h1 class="center">Sport</h1>
 
    <label class="item item-input item-select">
-    <div class="input-label">
-      Séance : 
+      <div class="input-label">
+        Séance : 
+      </div>
+     
+      <select ng-model="selectedpractice" ng-options="practice as practice.practiceName for practice in practices">
+        <option value="" disabled selected">Selectionner votre séance</option>  
+      </select>
+    </label>
+    
+    <div class="row">
+      <img class="col-25" style="max-height: 100px; max-width: 100px;" ng-src="{{goal.image}}">
+      <div class="col-75">
+        <h1>{{selectedpractice.practiceName}}</h1>
+        <h2>objectif : {{goal.name}}</h2>
+      </div>
     </div>
-   
-    <select ng-model="selectedpractice" ng-options="practice as practice.practiceName for practice in practices">
-      <option value="" disabled selected">Selectionner votre séance</option>  
-    </select>
-
-  </label>
-  <!-- <ion-item ng-repeat="practice in practices"> -->
-    <div class="item item-thumbnail-left">
-      <img ng-src="{{goal.image}}">
-      <h1>{{selectedpractice.practiceName}}</h1>
-      <h2>objectif : {{goal.name}}</h2>
-      <button class="button button-stable">
-        imprimer
-      </button>
-    </div>
+    <button class="button button-stable">
+      imprimer
+    </button>
     
     <div ng-repeat="exercise in selectedpractice.listExo" class="item item-thumbnail-left">
       <img ng-src="{{exercise.pictureExercise}}">

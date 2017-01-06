@@ -2,24 +2,26 @@
   <ion-content>
     <h1 class="center">Nutrition</h1>
 
-   <label class="item item-input item-select">
-    <div class="input-label">
-      Repas : 
-    </div>
-   
-    <select ng-model="selectedmeal" ng-options="meal as meal.mealName for meal in meals">
-      <option value="" disabled selected">Selectionner votre repas</option>  
-    </select>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Repas : 
+      </div>
+     
+      <select ng-model="selectedmeal" ng-options="meal as meal.mealName for meal in meals">
+        <option value="" disabled selected">Selectionner votre repas</option>  
+      </select>
+    </label>
 
-  </label>
-    <div class="item item-thumbnail-left">
-      <img ng-src="{{goal.image}}">
-      <h1>{{selectedmeal.mealName}}</h1>
-      <h2>objectif : {{goal.name}}</h2>
-      <button class="button button-stable" ng-click="print()">
-        imprimer
-      </button>
+    <div class="row">
+      <img class="col-25" style="max-height: 100px; max-width: 100px;" ng-src="{{goal.image}}">
+      <div class="col-75">
+        <h1>{{selectedmeal.mealName}}</h1>
+        <h2>objectif : {{goal.name}}</h2>
+      </div>
     </div>
+    <button class="button button-stable">
+      imprimer
+    </button>
     
     <div ng-repeat="dish in selectedmeal.listDish" class="item item-thumbnail-left">
       <img ng-src="{{dish.dishPicture}}">
