@@ -1,17 +1,14 @@
 <ion-view>
 <ion-content>
 
-  <div class="list card">
-
-  <div class="item item-thumbnail-left">
-	    <img src="ressources/stayfit.jpg">
-	    <h1>Welcome on the StayFit Project!</h1>
-
+	   <!--  <img style="max-width: 100%; max-height: 100%; margin: auto;display: block;" src="ressources/stayfit.jpg"> -->
+	    <h1 style="text-align: center;">Welcome on the StayFit Project!</h1>
+ 
 	    
 		
-		<div class="row responsive-sm" ng-if="!user.isConnected">
+		<div class="row" ng-if="!user.isConnected">
   			<div class="col">
-  				<button class="button button-stable" ng-click="login()">
+  				<button class="button button-stable" style="float: right;" ng-click="login()">
   				Connexion
 				</button>
 			</div>
@@ -22,16 +19,14 @@
 			</div>
 
 		</div>
-	   	<ion-item ng-if="user.isConnected">
+	   	<ion-item ng-if="user.isConnected" style="text-align: center">
 	          Hello {{user.firstName}} , n'oublies pas : ta sueur d'aujourd'hui, c'est ton sourire de demain.. 
 	   	</ion-item>
-  </div>
 
   <div class="item item-image">
     <img src="ressources/welcome.png" style="max-width: 500px;">
   </div>
 
    
-</div>
   </ion-content>
 </ion-view>
