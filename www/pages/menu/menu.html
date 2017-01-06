@@ -62,28 +62,18 @@
         </ion-item>
         </div>
 
-      </ion-list>
-    </div>
-    <div class="bottomItem button-icon">
-      <div class="row">
-        <div class="col">
-          <ion-item menu-close  ng-click="goToContact()" >
-            Contact
-          </ion-item>
+        <div class="item item-divider">
+          
+        <ion-item menu-close ng-click="goToContact()">
+          Contact
+        </ion-item>
+        <ion-item menu-close ng-click="goToAbout()">
+          About
+        </ion-item>
+        <ion-item ng-if="user.isConnected" menu-close ng-click="deconnexion()">
+          Deconnexion
+        </ion-item>
         </div>
-        <div class="col">
-          <ion-item menu-close  ng-click="goToAbout()">
-            About
-          </ion-item>
-        </div>
-        </div>
-        <div class="row">
-          <ion-item menu-close ng-if="user.isConnected" ng-click="deconnexion()">
-            Deconnexion
-          </ion-item>
-        </div>
-        
-      </div>
       
     </ion-content>
 
