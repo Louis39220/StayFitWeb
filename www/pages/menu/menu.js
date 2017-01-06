@@ -141,7 +141,18 @@ angular.module('menu.controllers', [])
       $scope.closeModal();
       $ionicLoading.show();
       userService.subscribe(newUser).then(function(response) {
-        if (response.data != 0) {
+        
+        if (response.data == -1){
+          $scope.subscribeAlreadyExist =true;
+          $ionicLoading.hide();
+          $scope.subscribe();}
+        else if (response.data == 0){
+          $scope.erreurSubscribe = true;
+          $ionicLoading.hide();
+          $scope.subscribe();
+
+        }
+        else{
           $scope.user.mail=newUser.mail;
           $scope.user.id = response.data;
           $scope.user.isConnected=true;
@@ -149,10 +160,7 @@ angular.module('menu.controllers', [])
           console.log("subscribe ok");
           $ionicLoading.hide();
           $scope.getFirstInfos();
-        }else{
-          $scope.erreurSubscribe = true;
-          $ionicLoading.hide();
-          $scope.subscribe();
+
         }
       }, function() {
         $scope.erreurSubscribe = true;
