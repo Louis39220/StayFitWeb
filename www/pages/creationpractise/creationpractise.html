@@ -14,7 +14,7 @@
             <div class="input-label">
               Objectif : 
             </div>
-            <select ng-model="selectedpractice" ng-options="goal as goal.name for goal in goals">
+            <select ng-model="practiceGoal" ng-options="goal as goal.name for goal in goals">
               <option value="" disabled selected">Selectionner votre objectif</option>  
             </select>
           </label>
@@ -57,7 +57,7 @@
             <button class="button button-block button-balanced" type="submit" ng-click="addNewChoice()">Ajouter exercice</button>
           </label>
             <label class="item">
-            <button class="button button-block button-balanced" type="submit">Sauvegarder</button>
+            <button class="button button-block button-balanced" type="submit" ng-click="saveNewPractice()">Sauvegarder</button>
           </label>
        
      
