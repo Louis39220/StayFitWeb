@@ -1,14 +1,17 @@
 angular.module('creationpractise.controllers', [])
 
-.controller('CreationpractiseCtrl', function($scope) {
+.controller('CreationpractiseCtrl', function($scope,sportService) {
 
-
+	$scope.modif = {idGoal:'', practiceName:''};
+	$scope.practiceGoal = {};
 
 
 
   $scope.choices = [{id: 'choice1'}];
 
-  
+  $scope.saveNewPractice = function() {
+  	sportService.setPractice(modif)
+  }
 
   $scope.addNewChoice = function() {
 

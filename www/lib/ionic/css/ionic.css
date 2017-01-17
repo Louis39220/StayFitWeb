@@ -8637,7 +8637,8 @@ progress {
       border-color: transparent;
       background: none;
       box-shadow: none;
-      color: #ddd; }
+      color: #fff;
+      font-weight: bold; }
     .button.button-light.button-icon {
       border-color: transparent;
       background: none; }

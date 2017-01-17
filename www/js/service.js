@@ -118,10 +118,11 @@ angular.module('services', [])
 				url: 'http://54.214.204.132:8080/practice/findpractices/'+id
 			})
 		},
-		setPractices: function(id){
+		setPractice: function(param){
 			return $http({
 				method: 'POST',
-				url: 'http://54.214.204.132:8080/practice/create/'+id
+				url: 'http://54.214.204.132:8080/practice/create/',
+				params: param
 			})
 		}
 	}
