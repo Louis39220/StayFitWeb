@@ -225,5 +225,5 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     })
 
   // if none of the above states are matched, use this as the fallback
-  //$urlRouterProvider.otherwise('/app/welcome');
+  $urlRouterProvider.otherwise('/app/');
 });
