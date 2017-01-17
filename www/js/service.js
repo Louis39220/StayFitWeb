@@ -124,6 +124,19 @@ angular.module('services', [])
 				url: 'http://54.214.204.132:8080/practice/create/',
 				params: param
 			})
+		},
+		getExercises: function(){
+			return $http({
+				method: 'GET',
+				url: 'http://54.214.204.132:8080/exercise'
+			})
+		},
+		addExercise: function(param){
+			return $http({
+				method: 'POST',
+				url: 'http://54.214.204.132:8080/practice/addExo/',
+				params: param
+			})
 		}
 	}
 })

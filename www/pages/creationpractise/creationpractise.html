@@ -1,66 +1,58 @@
 <ion-view>
   <ion-content>
     <h1 class="center">Coach : Création d'une séance d'entraînement</h1>
- 
+      <form name="informationForm" ng-submit="doInformationModification(modif)">
         <div class="list card">
-      <div class="item item-body">
-        <form name="informationForm" ng-submit="doInformationModification(modif)">
-
-          <label class="item item-input item-stacked-label">
-          <span class="input-label">Nom séance :</span>
-          <input type="text" ng_model="modif.seance" placeholder="Nom séance">
-          </label>
-          <label class="item item-input item-select">
-            <div class="input-label">
-              Objectif : 
-            </div>
-            <select ng-model="practiceGoal" ng-options="goal as goal.name for goal in goals">
-              <option value="" disabled selected">Selectionner votre objectif</option>  
-            </select>
-          </label>
-        </form>
-
+          <div class="item item-body">
+            <label class="item item-input item-stacked-label">
+            <span class="input-label">Nom séance :</span>
+            <input type="text" ng_model="modif.name" placeholder="Nom séance">
+            </label>
+            <label class="item item-input item-stacked-label">
+            <span class="input-label">Description :</span>
+            <input type="text" ng_model="modif.description" placeholder="Nom séance">
+            </label>
+            <label class="item item-input item-select">
+              <div class="input-label">Objectif : </div>
+              <select ng-model="modif.goal" ng-options="goal as goal.name for goal in goals">
+                <option value="" disabled selected">Selectionner votre objectif</option>  
+              </select>
+            </label>
+          </div>
         </div>
+
+
+        <div class="list card" data-ng-repeat="link in newLinks">
+          <div class="item item-body">
+              <label class="item item-input item-select">
+                <div class="input-label">Exercice : </div>
+                <select ng-model="link.selectedExercise" ng-options="exercise as exercise.nameExercise for exercise in exercises">
+                  <option value="" disabled selected">Selectionner votre exercice</option>  
+                </select>
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Durée : </span>
+                <input type="number" ng-model="link.duration">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Nombre de set : </span>
+                <input type="number" ng-model="link.set">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Nombre de répétitions : </span>
+                <input type="number" ng-model="link.repetition">
+              </label>
+              <a class="button button-icon icon ion-close-circled" ng-click="removeChoice(link)"></a>
+          </div>
         </div>
-           <fieldset  data-ng-repeat="choice in choices">
-       <div class="list card">
-      <div class="item item-body">
-        <form name="informationForm" ng-submit="doInformationModification(modif)">
-        <label class="item item-input item-select">
-    <div class="input-label">
-      Exercice : 
-    </div>
-   
-    <select ng-model="selectedpractice" ng-options="practice as practice.practiceName for practice in practices">
-      <option value="" disabled selected">Selectionner votre exercice</option>  
-    </select>
-  </label>
-   <label class="item item-input">
-          <span class="input-label">Durée : </span>
-          <input type="number" ng-model="modif.Durée">
+        <label class="item">
+          <button class="button button-block button-balanced" type="submit" ng-click="addNewChoice()">Ajouter exercice</button>
         </label>
-        <label class="item item-input">
-          <span class="input-label">Nombre de set : </span>
-          <input type="number" ng-model="modif.set">
+        <label class="item">
+          <button class="button button-block button-balanced" type="submit" ng-click="saveNewPractice(modif,newLinks)">Sauvegarder</button>
         </label>
-        <label class="item item-input">
-          <span class="input-label">Nombre de répétitions : </span>
-          <input type="number" ng-model="Ajouter.">
-        </label>
-         <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
-         </form>
-          </fieldset>
-           </div>
-    </div>
-  </fieldset>
-    <label class="item">
-            <button class="button button-block button-balanced" type="submit" ng-click="addNewChoice()">Ajouter exercice</button>
-          </label>
-            <label class="item">
-            <button class="button button-block button-balanced" type="submit" ng-click="saveNewPractice()">Sauvegarder</button>
-          </label>
        
-     
+     </form>
           
   
         </ion-content>
