@@ -2,6 +2,126 @@
   <ion-content>
     <h1 class="center">Coach : Création d'un exercice</h1>
  
+	<div class="list card">
+      <div class="item item-body">
+        <form name="informationForm" ng-submit="doInformationModification(modif)">
+
+          <label class="item item-input item-stacked-label">
+          <span class="input-label">Nom de l'exercice :</span>
+          <input type="text" ng_model="modif.seance" placeholder="Nom de l'exercice">
+          </label>
+          <label class="item item-input item-stacked-label">
+          <span class="input-label">Description de l'exercice :</span>
+          <input type="text" ng_model="modif.seance" placeholder="Description de l'exercice">
+          </label>
+
+        </form>
+    </div>
+	</div>
+
+
+	<div class="list card">
+      <div class="item item-body">
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+               Jambes : 
+            </div>
+   
+            <select ng-model="exercise.legDifficultyExercice">
+              <option value="" disabled selected">Difficulté pour les jambes</option>  
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+               Bras : 
+            </div>
+   
+            <select ng-model="exercise.armDifficultyExercice">
+              <option value="" disabled selected">Difficulté pour les bras</option>  
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </label>
+
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+               Pectoraux : 
+            </div>
+   
+            <select ng-model="exercise.chestDifficultyExercice">
+              <option value="" disabled selected">Difficulté pour les pectoraux</option>  
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+               Dos : 
+            </div>
+   
+            <select ng-model="exercise.backDifficultyExercice">
+              <option value="" disabled selected">Difficulté pour le dos</option>  
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+               Abdos : 
+            </div>
+   
+            <select ng-model="exercise.absDifficultyExercice">
+              <option value="" disabled selected">Difficulté pour les abdos</option>  
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+               Fessiers : 
+            </div>
+   
+            <select ng-model="exercise.buttDifficultyExercice">
+              <option value="" disabled selected">Difficulté pour les fessiers</option>  
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </label>
+
+
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Image pour illustrer l'exercice: <input type="file" ngf-select="" ng-model="picFile" name="file" ngf-accept="'image/*'" required="">
+            </div>
+          </label>
+
+          <label class="item">
+            <button class="button button-block button-balanced" type="submit">Sauvegarder</button>
+          </label>
+
+      	</div>
+	</div>
     
-   </ion-content>
+        </ion-content>
 </ion-view>
