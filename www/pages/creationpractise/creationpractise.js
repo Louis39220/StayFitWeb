@@ -1,18 +1,17 @@
 angular.module('creationpractise.controllers', [])
 
 .controller('CreationpractiseCtrl', function($scope,sportService) {
-
-	$scope.modif = {idGoal:'', name:'', description:'', idUser:$scope.user.id};
-	$scope.practiceGoal = {};
-	$scope.exercises = {};
+	var initVariable = function() {
+		$scope.modif = {idGoal:'', name:'', description:'', idUser:$scope.user.id};
+		$scope.practiceGoal = {};
+		$scope.exercises = {};
+		$scope.newLinks = [{id: '0'}];
+	};
+	initVariable();
 	sportService.getExercises().then(function(response){
 		console.log(response.data);
 		$scope.exercises = response.data;
 	});
-
-
-
-  $scope.newLinks = [{id: '0'}];
 
   $scope.saveNewPractice = function(modif,newLinks) {
   	modif.idGoal = modif.goal.idGoal;
@@ -27,6 +26,7 @@ angular.module('creationpractise.controllers', [])
   			sportService.addExercise(item).then(function(response){
   				//TODO gestion erreur
   				console.log("ajout exercice :",response);
+  				initVariable();
   			})
   		})
   		

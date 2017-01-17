@@ -1,8 +1,8 @@
 angular.module('creationexercise.controllers', [])
 
 .controller('CreationexerciseCtrl', function($scope,sportService) {
-
-	$scope.newExercise = {nameExercise:'',
+	var initVariable = function(){
+		$scope.newExercise = {nameExercise:'',
 						  descriptionExercise:'',
 						  difficultyShoulderExercise: null,
 						  legDifficultyExercice: null,
@@ -12,13 +12,16 @@ angular.module('creationexercise.controllers', [])
 						  difficultyBackExercise:null,
 						  difficultyCheastExercise:null,
 						  pictureExercise:''
+		};
 	};
+	initVariable();
 
 	$scope.saveNewExercise = function(newExercise) {
 		console.log("newExercise :", newExercise);
 		sportService.createExercise(newExercise).then(function(response){
 			console.log("Reponse WS create exo :", response.data);
 			//TODO gestion erreur
+			initVariable();
 		})
 	}
 
