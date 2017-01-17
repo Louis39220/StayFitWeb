@@ -23,8 +23,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   	birthday: "",
   	size: null,
     sexe: "",
-  	is_coach: true,
-  	is_dietitian: true,
+  	is_coach: false,
+  	is_dietitian: false,
     idGoal: null
   };
 
