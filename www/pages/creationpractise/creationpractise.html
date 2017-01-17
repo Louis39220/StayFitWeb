@@ -1,7 +1,7 @@
 <ion-view>
   <ion-content>
     <h1 class="center">Coach : Création d'une séance d'entraînement</h1>
-      <form name="informationForm" ng-submit="doInformationModification(modif)">
+      <form name="informationForm">
         <div class="list card">
           <div class="item item-body">
             <label class="item item-input item-stacked-label">
@@ -46,10 +46,10 @@
           </div>
         </div>
         <label class="item">
-          <button class="button button-block button-balanced" type="submit" ng-click="addNewChoice()">Ajouter exercice</button>
+          <button class="button button-block button-balanced" ng-click="addNewChoice()">Ajouter exercice</button>
         </label>
         <label class="item">
-          <button class="button button-block button-balanced" type="submit" ng-click="saveNewPractice(modif,newLinks)">Sauvegarder</button>
+          <button class="button button-block button-balanced" ng-click="saveNewPractice(modif,newLinks)">Sauvegarder</button>
         </label>
        
      </form>

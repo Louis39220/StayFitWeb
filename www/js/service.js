@@ -141,7 +141,7 @@ angular.module('services', [])
 		setPractice: function(param){
 			return $http({
 				method: 'POST',
-				url: 'http://54.214.204.132:8080/practice/create/',
+				url: 'http://54.214.204.132:8080/practice/create',
 				params: param
 			})
 		},
@@ -154,7 +154,14 @@ angular.module('services', [])
 		addExercise: function(param){
 			return $http({
 				method: 'POST',
-				url: 'http://54.214.204.132:8080/practice/addExo/',
+				url: 'http://54.214.204.132:8080/practice/addExo',
+				params: param
+			})
+		},
+		createExercise: function(param){
+			return $http({
+				method: 'POST',
+				url: 'http://54.214.204.132:8080/exercise/create',
 				params: param
 			})
 		}
