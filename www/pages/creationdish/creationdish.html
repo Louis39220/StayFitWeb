@@ -1,6 +1,57 @@
 <ion-view>
   <ion-content>
     <h1 class="center">Diététicien : Création d'un plat</h1>
+        <form name="dishForm">
+    	<div class="list card">
+          <div class="item item-body">
+            <label class="item item-input item-stacked-label">
+            <span class="input-label">Nom du plat :</span>
+            <input type="text" ng_model="newDish.name" placeholder="Nom du plat">
+            </label>
+            <label class="item item-input item-stacked-label">
+            <span class="input-label">Description du plat :</span>
+            <input type="text" ng_model="newDish.description" placeholder="Description du plat">
+            </label>
+            <label class="item item-input item-stacked-label">
+            <span class="input-label">Recette du plat :</span>
+            <input type="text" ng_model="newDish.dishRecette" placeholder="Recette du plat">
+            </label>
+        </div>
+    	</div>
+
+      <div class="list card">
+        <div class="item item-body">
+          <label class="item item-input">
+              <span class="input-label">Calorie kcal pour 100g : </span>
+              <input type="number" ng-model="newDish.caloriePercent">
+            </label>
+           <label class="item item-input">
+              <span class="input-label">Proteine % : </span>
+              <input type="number" ng-model="newDish.proteinePercent">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Glucide % : </span>
+              <input type="number" ng-model="newDish.glucidePercent">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Lipide % : </span>
+              <input type="number" ng-model="newDish.lipidePercent">
+            </label>
+
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Image pour illustrer le repas: 
+            </div>
+            <input type="file" ngf-select="" ng-model="newDish.picture" name="file" ngf-accept="'image/*'" required="">
+          </label>
+
+          <label class="item">
+            <button class="button button-block button-balanced" ng-click="saveNewDish(newDish)">Sauvegarder</button>
+          </label>
+
+      	</div>
+      </div>
+    </form>
  
       
         </ion-content>

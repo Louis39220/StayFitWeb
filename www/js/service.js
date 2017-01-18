@@ -126,6 +126,13 @@ angular.module('services', [])
 				url: 'http://54.214.204.132:8080/meal/addDish/',
 				params: param
 			})
+		},
+		createDish: function(param){
+			return $http({
+				method: 'POST',
+				url: urlWS+'/dish/create',
+				params: param
+			})
 		}
 	}
 })
