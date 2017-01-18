@@ -27,15 +27,14 @@ angular.module('profil.controllers', [])
 			$scope.user.sexe = modif.sexe;
 		}
 		if ($scope.file) {
-			$scope.user.picture = "/ressources/"+$scope.user.id+".jpg";
+			$scope.user.picture = "ressources/"+$scope.user.id+".jpg";
 		}
+		console.log($scope.user.firstName);
 		$scope.modif = {firstName:'', lastName:'', sexe:'',showModification: false};
 		userService.setInfos({id: $scope.user.id, firstname: $scope.user.firstName, lastname: $scope.user.lastName, birthday: $scope.user.birthday, sexe: $scope.user.sexe, size: $scope.user.size | 0,weight: $scope.user.weight | 0, picture: $scope.user.picture})
-		.then(function (){
+		.then(function (response){
 			if (response.data != 0) {
-	          $scope.user.mail=newUser.mail;
-	          $scope.user.id = response.data;
-	          var req = uploadService.upload($scope.file,$scope.user.id);
+	          var req = uploadService.upload($scope.file,$scope.user.id+".jpg");
 	          if(req.status == 200){
 	          	console.log("ok");
 	          	//TODO gestion erreur

@@ -21,7 +21,7 @@ angular.module('services', [])
 		},
 
 		setInfos: function(infos){
-			var data = {id: infos.id, firstname: infos.firstName, lastname: infos.lastName, birthday: infos.birthday, sexe: infos.sexe, size: infos.size | 0,weight: infos.weight | 0, picture: infos.picture};
+			var data = {id: infos.id, firstname: infos.firstname, lastname: infos.lastname, birthday: infos.birthday, sexe: infos.sexe, size: infos.size | 0,weight: infos.weight | 0, picture: infos.picture};
 			return $http({
 				method: 'POST',
 				url: urlWS+'/user/create',

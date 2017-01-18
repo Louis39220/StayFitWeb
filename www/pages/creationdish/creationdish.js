@@ -18,9 +18,9 @@ angular.module('creationdish.controllers', [])
 	$scope.saveNewDish = function(newDish) {
 		var rand = Math.floor((Math.random() * 10) + 1);
 		if ($scope.file) {
-			newDish.picture = "ressources/"+newDish.name+rand;
+			newDish.picture = "ressources/"+newDish.name+rand+".jpg";
 			nutritionService.createDish(newDish).then(function(response){
-				var req = uploadService.upload($scope.file,newDish.name+rand);
+				var req = uploadService.upload($scope.file,newDish.name+rand+".jpg");
 				if(req.status == 200){
 					console.log("ok");
 					console.log("Reponse WS create plat :", response.data);

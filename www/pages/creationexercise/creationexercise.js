@@ -20,9 +20,9 @@ angular.module('creationexercise.controllers', [])
 	$scope.saveNewExercise = function(newExercise) {
 		var rand = Math.floor((Math.random() * 10) + 1);
 		if ($scope.file) {
-			newExercise.pictureExercise = "ressources/"+newExercise.nameExercise+rand;
+			newExercise.pictureExercise = "ressources/"+newExercise.nameExercise+rand+".jpg";
 			sportService.createExercise(newExercise).then(function(response){
-				var req = uploadService.upload($scope.file,newExercise.nameExercise+rand);
+				var req = uploadService.upload($scope.file,newExercise.nameExercise+rand+".jpg");
 				if(req.status == 200){
 					console.log("ok");
 					console.log("Reponse WS create exo :", response.data);
