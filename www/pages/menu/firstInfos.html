@@ -32,6 +32,12 @@
           <span class="input-label">(Optionel) Poids en kg</span>
           <input type="number" ng-model="infos.weight">
         </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Photo de profil 
+          </div>
+          <input type="file" name="file" accept="image/*" onchange="angular.element(this).scope().setFile(this.files)"/>
+        </label>
         <label class="item">
           <button class="button button-block button-positive" type="submit">Valider</button>
         </label>

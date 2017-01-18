@@ -1,10 +1,11 @@
 angular.module('menu.controllers', [])
 
-.controller('AppCtrl', function($scope, $window, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService) {
+.controller('AppCtrl', function($scope, $window, $ionicModal, $timeout, $state,$location,$ionicLoading,userService,bodyUserService,uploadService) {
 
   $scope.erreurAuth = false;
   $scope.erreurSubscribe = false;
   $scope.erreurFirstInfos = false;
+  $scope.file = null;
   // Triggered in the login modal to close it
   $scope.closeModal = function() {
     $scope.modal.remove();
@@ -187,6 +188,13 @@ angular.module('menu.controllers', [])
     infos.id = $scope.user.id;
     $scope.closeModal();
     $ionicLoading.show();
+    if (file) {
+      var req = uploadService.upload($scope.file,$scope.user.id+".jpg");
+      if(req.status == 200){
+        console.log("ok");
+        infos.picture = infos.id+".jpg"
+      }
+    }
     userService.setInfos(infos)
 
     .then(function(response) {
@@ -205,6 +213,9 @@ angular.module('menu.controllers', [])
             $scope.user.weight = infos.weight;
           }else{
             $scope.user.weight = 0;
+          }
+          if (infos.picture) {
+            $scope.user.picture = infos.picture;
           }
           $scope.erreurFirstInfos = false;
           $ionicLoading.hide();
@@ -273,6 +284,9 @@ angular.module('menu.controllers', [])
     $scope.modal.remove();
   });
 
+  $scope.setFile = function(file) {
+      $scope.file = file;
+  };  
 
 
 })
