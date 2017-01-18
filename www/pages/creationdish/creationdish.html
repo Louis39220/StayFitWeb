@@ -42,7 +42,7 @@
             <div class="input-label">
               Image pour illustrer le repas: 
             </div>
-            <input type="file" ngf-select="" ng-model="newDish.picture" name="file" ngf-accept="'image/*'" required="">
+            <input type="file" name="file" accept="image/*" onchange="angular.element(this).scope().setFile(this.files)"/>
           </label>
 
           <label class="item">

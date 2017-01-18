@@ -99,7 +99,7 @@
             <div class="input-label">
               Image pour illustrer l'exercice: 
             </div>
-            <input type="file" name="file" onchange="angular.element(this).scope().setFile(this.files)"/>
+            <input type="file" name="file" accept="image/*" onchange="angular.element(this).scope().setFile(this.files)"/>
           </label>
           <label class="item">
             <button class="button button-block button-balanced" ng-click="saveNewExercise(newExercise)">Sauvegarder</button>

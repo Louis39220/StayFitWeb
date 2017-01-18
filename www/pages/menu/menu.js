@@ -196,8 +196,16 @@ angular.module('menu.controllers', [])
           $scope.user.lastName = infos.lastName;
           $scope.user.birthday = infos.birthday;
           $scope.user.sexe = infos.sexe;
-          if (infos.size != null) $scope.user.size = infos.size;
-          if (infos.weight != null) $scope.user.weight = infos.weight;
+          if (infos.size != null) {
+            $scope.user.size = infos.size;
+          }else{
+            $scope.user.size = 0;
+          }
+          if (infos.weight != null) {
+            $scope.user.weight = infos.weight;
+          }else{
+            $scope.user.weight = 0;
+          }
           $scope.erreurFirstInfos = false;
           $ionicLoading.hide();
           console.log($scope.user);
