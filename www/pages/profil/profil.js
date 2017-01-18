@@ -43,16 +43,13 @@ angular.module('profil.controllers', [])
 	          $scope.erreurSubscribe = false;
 	          console.log("subscribe ok");
 	          $ionicLoading.hide();
-	          $scope.getFirstInfos();
 	        }else{
 	          $scope.erreurSubscribe = true;
 	          $ionicLoading.hide();
-	          $scope.subscribe();
 	        }
 		}, function() {
 			$scope.erreurSubscribe = true;
 			$ionicLoading.hide();
-			$scope.subscribe();
 		})
 	}
 
