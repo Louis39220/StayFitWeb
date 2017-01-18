@@ -106,6 +106,33 @@ angular.module('services', [])
 				method: 'GET',
 				url: urlWS+'/meal/findmeals/'+id
 			})
+		},
+		setMeal: function(param){
+			return $http({
+				method: 'POST',
+				url: 'http://54.214.204.132:8080/meal/create/',
+				params: param
+			})
+		},
+		getDishs: function(){
+			return $http({
+				method: 'GET',
+				url: 'http://54.214.204.132:8080/dish'
+			})
+		},
+		addDish: function(param){
+			return $http({
+				method: 'POST',
+				url: 'http://54.214.204.132:8080/meal/addDish/',
+				params: param
+			})
+		},
+		createDish: function(param){
+			return $http({
+				method: 'POST',
+				url: urlWS+'/dish/create',
+				params: param
+			})
 		}
 	}
 })

@@ -1,7 +1,50 @@
 <ion-view>
   <ion-content>
     <h1 class="center">Diététicien : Création d'un repas</h1>
+ 	<form name="informationForm" ng-submit="doInformationModification(modif)">
+        <div class="list card">
+          <div class="item item-body">
+            <label class="item item-input item-stacked-label">
+            <span class="input-label">Nom repas :</span>
+            <input type="text" ng_model="modif.mealName" placeholder="Nom repas">
+            </label>
+            <label class="item item-input item-stacked-label">
+            <span class="input-label">Description :</span>
+            <input type="text" ng_model="modif.description" placeholder="Description">
+            </label>
+            <label class="item item-input item-select">
+              <div class="input-label">Objectif : </div>
+              <select ng-model="modif.goal" ng-options="goal as goal.name for goal in goals">
+                <option value="" disabled selected">Selectionner votre objectif</option>  
+              </select>
+            </label>
+          </div>
+        </div>
+
+
+        <div class="list card" data-ng-repeat="link in newLinks">
+          <div class="item item-body">
+              <label class="item item-input item-select">
+                <div class="input-label">Plat : </div>
+                <select ng-model="link.selectedDish" ng-options="dish as dish.name for dish in dishs">
+                  <option value="" disabled selected">Selectionner votre plat</option>  
+                </select>
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Quantité (en g) : </span>
+                <input type="number" ng-model="link.quantity">
+              </label>
+              <a class="button button-icon icon ion-close-circled" ng-click="removeChoice(link)"></a>
+          </div>
+        </div>
+        <label class="item">
+          <button class="button button-block button-balanced" type="submit" ng-click="addNewChoice()">Ajouter plat</button>
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" type="submit" ng-click="saveNewMeal(modif,newLinks)">Sauvegarder</button>
+        </label>
+       
+     </form>
  
- 
-        </ion-content>
+  </ion-content>
 </ion-view>
