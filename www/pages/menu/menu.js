@@ -186,6 +186,7 @@ angular.module('menu.controllers', [])
 
   $scope.setFirstInfos = function(infos) {
     infos.id = $scope.user.id;
+    infos.picture = "ressources/"+infos.id+".jpg";
     $scope.closeModal();
     $ionicLoading.show();
     if (file) {
