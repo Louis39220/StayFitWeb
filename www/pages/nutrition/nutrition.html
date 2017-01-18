@@ -22,7 +22,7 @@
     </div>
     
     <div ng-repeat="dish in selectedmeal.listDish" class="item item-thumbnail-left">
-      <img ng-src="{{dish.dishPicture}}">
+      <img ng-if="dish.dishPicture!=''" ng-src="{{dish.dishPicture}}">
       <h2>{{dish.name}}</h2>
       Description : {{dish.description}}
       <div class="row responsive-sm">

@@ -22,7 +22,7 @@
     </div>
     
     <div ng-repeat="exercise in selectedpractice.listExo" class="item item-thumbnail-left">
-      <img ng-src="{{exercise.pictureExercise}}">
+      <img ng-if="exercise.pictureExercise!=''" ng-src="{{exercise.pictureExercise}}">
       <h2>{{exercise.nameExercise}}</h2>
       <div class="row responsive-sm">
         <div class="col">
