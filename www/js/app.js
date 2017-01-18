@@ -25,7 +25,8 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     sexe: "",
   	is_coach: false,
   	is_dietitian: false,
-    idGoal: null
+    idGoal: null,
+    picture: ""
   };
 
   $rootScope.bodyUser = {

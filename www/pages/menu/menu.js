@@ -226,6 +226,7 @@ angular.module('menu.controllers', [])
         $scope.user.is_dietitian = response.data.is_dietitian;
         $scope.user.size = response.data.size;
         $scope.user.idGoal = response.data.idGoal;
+        $scope.user.picture = response.data.picture;
         if ($scope.user.idGoal){
           $scope.goal.idGoal = $scope.goals[$scope.user.idGoal - 1].idGoal;
           $scope.goal.name = $scope.goals[$scope.user.idGoal - 1].name.toString();
