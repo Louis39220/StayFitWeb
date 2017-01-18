@@ -147,3 +147,18 @@ angular.module('services', [])
 		}
 	}
 })
+
+.factory('uploadService', function() {
+	return {
+		upload: function(file){
+			var formData = new FormData();
+		    formData.append("file", file[0]);
+		    console.log(file[0]);
+		    formData.append("name",file[0].name);
+		    var xhr = new XMLHttpRequest();
+			xhr.open("POST", urlWS+'/upload');
+			xhr.send(formData);
+			return xhr;
+		}
+	}
+})
