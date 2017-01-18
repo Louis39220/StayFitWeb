@@ -26,7 +26,7 @@ angular.module('profil.controllers', [])
 		if (modif.sexe != ''){
 			$scope.user.sexe = modif.sexe;
 		}
-		if (file) {
+		if ($scope.file) {
 			$scope.user.picture = "/ressources/"+$scope.user.id+"jpg";
 		}
 		$scope.modif = {firstName:'', lastName:'', sexe:'',showModification: false};
