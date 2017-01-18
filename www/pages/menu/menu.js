@@ -188,7 +188,7 @@ angular.module('menu.controllers', [])
     infos.id = $scope.user.id;
     $scope.closeModal();
     $ionicLoading.show();
-    if (file) {
+    if ($scope.file) {
       var req = uploadService.upload($scope.file,$scope.user.id+".jpg");
       if(req.status == 200){
         console.log("ok");
