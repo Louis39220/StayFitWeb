@@ -2,9 +2,9 @@
   <ion-content>
     <h1 class="center">Profil</h1>
     <div class="row">
-      <img class="col-25" ng-if="user.picture" ng-src="{{user.picture}}" style="max-width: 100px; max-height: 100px">
-      <img class="col-25" ng-if="!(user.picture)&&(user.sexe=='Masculin')" ng-src="ressources/profil_picture_mario.jpeg" style="max-width: 100px; max-height: 100px">
-      <img class="col-25" ng-if="!(user.picture)&&(user.sexe=='Feminin')" ng-src="ressources/profil_picture_kitty.jpg" style="max-width: 100px; max-height: 100px">
+      <img class="col-25" ng-if="user.picture && !isMobile" ng-src="{{user.picture}}" style="max-width: 100px; max-height: 100px">
+      <img class="col-25" ng-if="((isMobile)||(!user.picture))&&(user.sexe=='Masculin')" ng-src="ressources/profil_picture_mario.jpeg" style="max-width: 100px; max-height: 100px">
+      <img class="col-25" ng-if="((!isMobile)||(!user.picture))&&(user.sexe=='Feminin')" ng-src="ressources/profil_picture_kitty.jpg" style="max-width: 100px; max-height: 100px">
         <h1>{{user.firstName}} {{user.lastName}}</h1>
     </div>
     <div class="list card">
@@ -71,7 +71,7 @@
             <span class="input-label">Taille :</span>
             <input type="text" ng-model="modif.size" placeholder={{user.size}}>
           </label>
-          <label class="item item-input item-select" ng-if="isMobile">
+          <label class="item item-input item-select" ng-if="!isMobile">
             <div class="input-label">
               Photo de profil 
             </div>
