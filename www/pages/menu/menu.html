@@ -42,7 +42,7 @@
           Mon objectif
         </ion-item>
 
-        <div class="item item-divider" ng-if="user.is_coach && user.isConnected">
+        <div class="item item-divider" ng-if="user.is_coach && user.isConnected && isWeb">
         Coach
         <ion-item class="button-calm" menu-close ng-click="goToCreationpractise()">
           Créer Programme
@@ -52,12 +52,12 @@
         </ion-item>
         </div>
 
-        <div class="item item-divider" ng-if="user.is_coach && user.isConnected">
+        <div class="item item-divider" ng-if="user.is_dietitian && user.isConnected && isWeb">
           Diététicien
-        <ion-item class="button-balanced" ng-if="user.is_dietitian && user.isConnected" menu-close ng-click="goToCreationmeal()">
+        <ion-item class="button-balanced" menu-close ng-click="goToCreationmeal()">
           Créer Repas
         </ion-item>
-        <ion-item class="button-balanced" ng-if="user.is_dietitian && user.isConnected" menu-close ng-click="goToCreationdish()">
+        <ion-item class="button-balanced" menu-close ng-click="goToCreationdish()">
           Créer Plat
         </ion-item>
         </div>

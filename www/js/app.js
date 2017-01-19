@@ -3,6 +3,11 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    $rootScope.device = ionic.Platform.device();
+    if (device ={}){ 
+    $rootScope.isWeb = true;}
+
+    console.log(ionic.Platform);
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(false);
@@ -28,6 +33,7 @@ angular.module('starter', ['ionic', 'menu.controllers','objectif.controllers', '
     idGoal: null,
     picture: ""
   };
+
 
   $rootScope.bodyUser = {
     weight: 0,
