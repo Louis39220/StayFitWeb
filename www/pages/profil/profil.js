@@ -4,7 +4,7 @@ angular.module('profil.controllers', [])
 	$scope.$on("$ionicView.beforeEnter", function(event, data){
 
 	});
-	$scope.modif = {firstName:'', lastName:'', birthday:'', sexe:'', showModification: false};
+	$scope.modif = {firstName:'', lastName:'', birthday:'',size:'', sexe:'', showModification: false};
 	$scope.file = null;
 // marche pas
 	$scope.showProfilModification = function () {
@@ -23,22 +23,29 @@ angular.module('profil.controllers', [])
 		if (modif.birthday != ''){
 			$scope.user.birthday = modif.birthday;
 		}
+		if (modif.size != ''){
+			$scope.user.size= modif.size;
+		}
+		
 		if (modif.sexe != ''){
 			$scope.user.sexe = modif.sexe;
 		}
 		if ($scope.file) {
 			$scope.user.picture = "ressources/"+$scope.user.id+".jpg";
 		}
-		console.log($scope.user.firstName);
-		$scope.modif = {firstName:'', lastName:'', sexe:'',showModification: false};
-		userService.setInfos({id: $scope.user.id, firstname: $scope.user.firstName, lastname: $scope.user.lastName, birthday: $scope.user.birthday, sexe: $scope.user.sexe, size: $scope.user.size | 0,weight: $scope.user.weight | 0, picture: $scope.user.picture})
+		console.log($scope.user);
+		$scope.modif = {firstName:'', lastName:'', size:'', birthday:'', sexe:'',showModification: false};
+		userService.updateInfos({id: $scope.user.id, firstname: $scope.user.firstName, lastname: $scope.user.lastName, size: $scope.user.size, birthday: $scope.user.birthday, sexe: $scope.user.sexe, picture: $scope.user.picture})
 		.then(function (response){
+
 			if (response.data != 0) {
+				if ($scope.file){
 	          var req = uploadService.upload($scope.file,$scope.user.id+".jpg");
 	          if(req.status == 200){
 	          	console.log("ok");
 	          	//TODO gestion erreur
 	          }
+	      }
 	          $scope.user.isConnected=true;
 	          $scope.erreurSubscribe = false;
 	          console.log("subscribe ok");

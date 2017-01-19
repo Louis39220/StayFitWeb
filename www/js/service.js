@@ -29,6 +29,15 @@ angular.module('services', [])
 			})
 		},
 
+		updateInfos: function(infos){
+			var data = {id: infos.id, firstname: infos.firstname, lastname: infos.lastname, birthday: infos.birthday, sexe: infos.sexe, picture: infos.picture};
+			return $http({
+				method: 'POST',
+				url: urlWS+'/user/updateInfos',
+				params: data
+			})
+		},
+
 		getInfos: function(id){
 			return $http({
 				method: 'GET',
